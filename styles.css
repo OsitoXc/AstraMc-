@@ -128,3 +128,48 @@ footer {
     font-size: 1em;
     color: white;
 }
+
+/* IP y puerto en la esquina */
+.server-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 1.2em;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Sección para ver la skin */
+.skin-viewer {
+    margin-top: 40px;
+    color: white;
+}
+
+.skin-viewer input {
+    padding: 10px;
+    font-size: 1em;
+    width: 200px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.skin-viewer button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #ff5733;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.skin-viewer button:hover {
+    background-color: #ff6f47;
+}
+
+#skinResult img {
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+}
