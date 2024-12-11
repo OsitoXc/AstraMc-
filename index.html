@@ -42,36 +42,9 @@
         </footer>
     </div>
 
-    <!-- Popup para agregar el servidor -->
-    <div id="serverPopup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup()">&times;</span>
-            <h2>¡Añadir AstraMc a tu lista de servidores de Minecraft!</h2>
-            <p>Sigue estos pasos para agregar el servidor automáticamente:</p>
-            <ol>
-                <li>Abre Minecraft y ve a la pantalla de "Multijugador".</li>
-                <li>Haz clic en "Agregar servidor".</li>
-                <li>En el campo "Dirección del servidor", ingresa: <strong>play.astramc.xyz:19284</strong></li>
-                <li>Haz clic en "Hecho" y listo, ¡estás listo para jugar!</li>
-            </ol>
-            <button onclick="closePopup()">Cerrar</button>
-        </div>
-    </div>
-
     <!-- Partículas en los botones -->
     <script src="particles.js"></script>
     <script>
-        // Mostrar el popup después de un clic en "Jugar Ahora"
-        document.querySelector('.play-button').addEventListener('click', function(event) {
-            event.preventDefault(); // Evitar que se abra el juego inmediatamente
-            document.getElementById('serverPopup').style.display = 'block'; // Mostrar popup
-        });
-
-        // Cerrar el popup
-        function closePopup() {
-            document.getElementById('serverPopup').style.display = 'none';
-        }
-
         // Función para ver la skin del jugador
         function verSkin() {
             var nick = document.getElementById("minecraftNick").value.trim();
