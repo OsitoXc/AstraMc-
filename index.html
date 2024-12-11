@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Efecto de piedras flotantes y destellos -->
+    <div class="piedras">
+        <div class="piedra"></div>
+        <div class="piedra"></div>
+        <div class="piedra"></div>
+        <div class="piedra"></div>
+        <div class="piedra"></div>
+    </div>
+    
     <div class="container">
         <header>
             <img src="logo.png" alt="AstraMc Logo" class="logo">
@@ -23,50 +32,18 @@
             </a>
         </div>
 
-        <!-- IP y puerto en la esquina -->
-        <div class="server-info">
-            <p>IP: play.astramc.xyz</p>
-            <p>Puerto: 19284</p>
+        <!-- Sección de IP y puerto -->
+        <div class="ip-info">
+            <p><strong>IP:</strong> play.astramc.xyz</p>
+            <p><strong>Puerto:</strong> 19284</p>
         </div>
-
-        <!-- Sección para poner el Nick y ver la skin -->
-        <div class="skin-viewer">
-            <h2>Ver tu Skin</h2>
-            <input type="text" id="minecraftNick" placeholder="Ingresa tu Nick de Minecraft">
-            <button onclick="verSkin()">Ver Skin</button>
-            <div id="skinResult"></div>
-        </div>
-
-        <footer>
-            <p>Servidor AstraMc - BoxPvP Dragon Ball</p>
-        </footer>
     </div>
 
-    <!-- Partículas en los botones -->
+    <footer>
+        <p>Servidor AstraMc - BoxPvP Dragon Ball</p>
+    </footer>
+
+    <!-- Partículas de aura -->
     <script src="particles.js"></script>
-    <script>
-        // Función para ver la skin del jugador
-        function verSkin() {
-            var nick = document.getElementById("minecraftNick").value.trim();
-            if (nick) {
-                var url = `https://api.mojang.com/users/profiles/minecraft/${nick}`;
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data && data.id) {
-                            var skinUrl = `https://crafatar.com/avatars/${data.id}?size=100&overlay=true`;
-                            document.getElementById("skinResult").innerHTML = `<img src="${skinUrl}" alt="Skin de Minecraft" />`;
-                        } else {
-                            document.getElementById("skinResult").innerHTML = "No se pudo encontrar la skin.";
-                        }
-                    })
-                    .catch(() => {
-                        document.getElementById("skinResult").innerHTML = "Error al obtener la skin.";
-                    });
-            } else {
-                document.getElementById("skinResult").innerHTML = "Por favor, ingresa un Nick de Minecraft.";
-            }
-        }
-    </script>
 </body>
 </html>
