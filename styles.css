@@ -11,6 +11,7 @@ body {
     align-items: center;
     height: 100vh;
     color: white;
+    overflow: hidden;
 }
 
 /* Contenedor principal */
@@ -20,6 +21,8 @@ body {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 1;
 }
 
 /* Estilos para el logo */
@@ -90,54 +93,95 @@ p {
     }
 }
 
-/* IP y puerto en la esquina */
-.server-info {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: white;
+/* Nueva sección para IP y puerto */
+.ip-info {
     font-size: 1.2em;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    border-radius: 5px;
-}
-
-/* Sección para ver la skin */
-.skin-viewer {
-    margin-top: 40px;
-    color: white;
-}
-
-.skin-viewer input {
-    padding: 10px;
-    font-size: 1em;
-    width: 200px;
-    margin-right: 10px;
-    border-radius: 5px;
-}
-
-.skin-viewer button {
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.3);
     padding: 10px 20px;
-    font-size: 1em;
-    background-color: #ff5733;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-}
-
-.skin-viewer button:hover {
-    background-color: #ff6f47;
-}
-
-#skinResult img {
-    margin-top: 20px;
     border-radius: 10px;
-    border: 2px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+/* Efecto de piedras flotantes y destellos como en el Torneo del Poder */
+@keyframes piedras {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(0, -10px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+}
+
+.piedras {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.piedra {
+    position: absolute;
+    background-color: #b5b5b5;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: piedras 2s infinite ease-in-out;
+}
+
+.piedra:nth-child(1) {
+    width: 30px;
+    height: 30px;
+    top: 10%;
+    left: 10%;
+    animation-duration: 2.5s;
+}
+
+.piedra:nth-child(2) {
+    width: 25px;
+    height: 25px;
+    top: 50%;
+    left: 20%;
+    animation-duration: 2s;
+}
+
+.piedra:nth-child(3) {
+    width: 35px;
+    height: 35px;
+    top: 40%;
+    left: 80%;
+    animation-duration: 3s;
+}
+
+.piedra:nth-child(4) {
+    width: 28px;
+    height: 28px;
+    top: 70%;
+    left: 60%;
+    animation-duration: 2.7s;
+}
+
+.piedra:nth-child(5) {
+    width: 32px;
+    height: 32px;
+    top: 30%;
+    left: 40%;
+    animation-duration: 3.3s;
+}
+
+/* Pie de página */
 footer {
     position: absolute;
     bottom: 20px;
     font-size: 1em;
     color: white;
-        }
+}
