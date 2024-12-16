@@ -3,43 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AstraMc - BoxPvP Dragon Ball</title>
+    <title>AstraMc</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Efecto de piedras flotantes y destellos -->
-    <div class="piedras">
-        <div class="piedra"></div>
-        <div class="piedra"></div>
-        <div class="piedra"></div>
-        <div class="piedra"></div>
-        <div class="piedra"></div>
-    </div>
-    
     <div class="container">
         <header>
-            <img src="logo.png" alt="AstraMc Logo" class="logo">
-            <h1>AstraMc</h1>
-            <p>¡Únete a nuestra aventura BoxPvP Dragon Ball!</p>
+            <img src="logo.png" alt="AstraMc Logo" class="server-logo">
+            <h1 class="title">AstraMc</h1>
+            <p class="subtitle">¡Únete a nuestra aventura!</p>
         </header>
 
-        <div class="buttons">
-            <a href="https://discord.gg/sCuRvjKP5Y" class="discord-button">
-                Unirse al Discord
-            </a>
-            <a href="minecraft://play.astramc.xyz:19284" class="play-button">
-                Jugar Ahora
-            </a>
-        </div>
+        <main>
+            <button class="play-button" onclick="launchMinecraft()">Jugar Ahora</button>
+            <button class="discord-button" onclick="window.open('https://discord.gg/sCuRvjKP5Y', '_blank')">Unirse al Discord</button>
+        </main>
 
-        <!-- Sección de IP y puerto -->
-        <div class="ip-info">
+        <footer>
             <p><strong>IP:</strong> play.astramc.xyz</p>
             <p><strong>Puerto:</strong> 19284</p>
-        </div>
+        </footer>
     </div>
 
-    <!-- Partículas de aura -->
-    <script src="particles.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
