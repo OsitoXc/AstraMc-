@@ -1,187 +1,75 @@
-/* Fondo de la página */
+/* General */
 body {
-    background-color: black;
-    background-image: url(''); /* Fondo negro sin imágenes */
-    background-size: cover;
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: white;
-    overflow: hidden;
-}
-
-/* Contenedor principal */
-.container {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ff8000, #ff4500); /* Colores Dragon Ball */
+    color: #fff;
     text-align: center;
-    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-    position: relative;
-    z-index: 1;
+    animation: backgroundMove 10s infinite alternate;
 }
 
-/* Estilos para el logo */
-.logo {
+@keyframes backgroundMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100px; }
+}
+
+/* Container */
+.container {
+    margin-top: 50px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo */
+.server-logo {
     width: 150px;
     height: auto;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-}
-
-/* Estilo de título */
-h1 {
-    font-size: 3em;
     margin-bottom: 10px;
-    color: #ff5733;
+    animation: bounce 2s infinite;
 }
 
-/* Estilo del texto */
-p {
-    font-size: 1.2em;
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Titles */
+.title {
+    font-size: 3rem;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.subtitle {
+    font-size: 1.2rem;
     margin-bottom: 30px;
 }
 
-/* Estilo de los botones */
-.buttons a {
-    display: inline-block;
-    margin: 15px;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    border-radius: 50px;
-    text-decoration: none;
-    color: white;
+/* Buttons */
+button {
+    font-size: 1.2rem;
+    color: #fff;
     background-color: #ff5733;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.buttons a:hover {
-    background-color: #ff6f47;
-    transform: scale(1.1);
+button:hover {
+    background-color: #c70039;
+    transform: scale(1.05);
 }
 
-.discord-button {
-    background-color: #7289da;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-.discord-button:hover {
-    background-color: #5a6e8f;
-}
-
-/* Efecto de partículas en los botones */
-.play-button {
-    animation: aura 2s infinite;
-}
-
-@keyframes aura {
-    0% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.6);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1);
-    }
-    100% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.6);
-    }
-}
-
-/* Nueva sección para IP y puerto */
-.ip-info {
-    font-size: 1.2em;
-    margin-top: 30px;
-    background: rgba(255, 255, 255, 0.3);
-    padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* Efecto de piedras flotantes y destellos como en el Torneo del Poder */
-@keyframes piedras {
-    0% {
-        transform: translate(0, 0);
-        opacity: 0.5;
-    }
-    50% {
-        transform: translate(0, -10px);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(0, 0);
-        opacity: 0.5;
-    }
-}
-
-.piedras {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.piedra {
-    position: absolute;
-    background-color: #b5b5b5;
-    border-radius: 50%;
-    opacity: 0.7;
-    animation: piedras 2s infinite ease-in-out;
-}
-
-.piedra:nth-child(1) {
-    width: 30px;
-    height: 30px;
-    top: 10%;
-    left: 10%;
-    animation-duration: 2.5s;
-}
-
-.piedra:nth-child(2) {
-    width: 25px;
-    height: 25px;
-    top: 50%;
-    left: 20%;
-    animation-duration: 2s;
-}
-
-.piedra:nth-child(3) {
-    width: 35px;
-    height: 35px;
-    top: 40%;
-    left: 80%;
-    animation-duration: 3s;
-}
-
-.piedra:nth-child(4) {
-    width: 28px;
-    height: 28px;
-    top: 70%;
-    left: 60%;
-    animation-duration: 2.7s;
-}
-
-.piedra:nth-child(5) {
-    width: 32px;
-    height: 32px;
-    top: 30%;
-    left: 40%;
-    animation-duration: 3.3s;
-}
-
-/* Pie de página */
 footer {
-    position: absolute;
-    bottom: 20px;
-    font-size: 1em;
-    color: white;
+    margin-top: 20px;
+    font-size: 1rem;
 }
