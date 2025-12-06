@@ -8,148 +8,149 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: #000;
-        font-family: 'Poppins', sans-serif;
-        color: white;
-        overflow-x: hidden;
-    }
+body {
+    margin: 0;
+    padding: 0;
+    background: #0a0a0a;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
 
-    #particles-js {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: #000;
-    }
+/* Partículas de fondo */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(#0a0a0a, #1b1b1b);
+}
 
-    header {
-        text-align: center;
-        padding: 50px 20px;
-    }
+/* Header logo */
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+.logo {
+    width: 200px;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px #7CFC00); /* glow verde Minecraft */
+}
 
-    .logo {
-        width: 220px;
-        animation: float 4s ease-in-out infinite;
-        filter: drop-shadow(0 0 25px #00fff7);
-    }
+/* Cajas de información y formulario */
+.info-box, .form-box, .success-box {
+    width: 90%;
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: #1e1e1e;
+    border: 2px solid #3a3a3a;
+    box-shadow: 0 0 25px #000;
+}
 
-    .title {
-        margin-top: 15px;
-        font-size: 42px;
-        font-weight: 800;
-        color: #00fff7;
-        letter-spacing: 1.5px;
-        text-shadow: 0 0 15px #00fff7, 0 0 25px #00fff7;
-    }
+.info-box h3, .form-box h3 {
+    color: #7CFC00;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
 
-    .info-box, .form-box, .success-box {
-        width: 90%;
-        max-width: 650px;
-        margin: 25px auto;
-        padding: 30px;
-        border-radius: 15px;
-        background: #0f0f0f;
-        border: 1px solid #1c1c1c;
-        box-shadow: 0 0 25px #000;
-    }
+/* Listas */
+.info-box ul {
+    padding-left: 20px;
+    list-style: none;
+}
+.info-box ul li::before {
+    content: "✔ ";
+    color: #7CFC00;
+}
 
-    .info-box h3, .form-box h3 {
-        color: #00fff7;
-        margin-bottom: 15px;
-        font-weight: 700;
-    }
+/* Inputs y botones */
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 10px;
+    border: 1px solid #3a3a3a;
+    background: #151515;
+    color: white;
+    font-size: 15px;
+    transition: 0.3s;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border: 1px solid #7CFC00;
+    box-shadow: 0 0 10px #7CFC00;
+}
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    background: #7CFC00;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+button:hover {
+    background: #64e000;
+    transform: scale(1.05);
+}
 
-    .info-box p, .info-box li {
-        font-size: 15px;
-        line-height: 1.6;
-    }
+/* Mensaje de éxito */
+.success-box {
+    display: none;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+.success-box h2 {
+    color: #7CFC00;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+.success-box p {
+    color: #c7c7c7;
+}
 
-    .info-box ul {
-        padding-left: 20px;
-        list-style: none;
-    }
+/* Footer con animaciones de abejas y flores */
+footer {
+    text-align: center;
+    color: #555;
+    font-size: 14px;
+    margin: 40px 0 20px 0;
+    position: relative;
+}
+.bee, .flower {
+    position: absolute;
+    animation: fly 10s linear infinite;
+}
+.bee {
+    width: 30px;
+    filter: drop-shadow(0 0 10px yellow);
+}
+.flower {
+    width: 25px;
+}
 
-    .info-box ul li::before {
-        content: "✔ ";
-        color: #00fff7;
-    }
-
-    input, select, textarea {
-        width: 100%;
-        padding: 14px;
-        margin-top: 12px;
-        border-radius: 10px;
-        border: 1px solid #222;
-        background: #151515;
-        color: white;
-        font-size: 15px;
-        transition: 0.3s;
-    }
-
-    input:focus, select:focus, textarea:focus {
-        outline: none;
-        border: 1px solid #00fff7;
-        box-shadow: 0 0 10px #00fff7;
-    }
-
-    button {
-        width: 100%;
-        padding: 15px;
-        font-size: 17px;
-        font-weight: 700;
-        border: none;
-        border-radius: 10px;
-        background: #00fff7;
-        color: #000;
-        cursor: pointer;
-        transition: 0.3s;
-        margin-top: 20px;
-    }
-
-    button:hover {
-        background: #00d8c9;
-        transform: scale(1.05);
-    }
-
-    .success-box {
-        display: none;
-        text-align: center;
-        animation: fadeIn 1s ease;
-    }
-
-    .success-box h2 {
-        color: #00fff7;
-        font-size: 28px;
-        font-weight: 800;
-        text-shadow: 0 0 15px #00fff7;
-        margin-bottom: 10px;
-    }
-
-    .success-box p {
-        color: #c7c7c7;
-    }
-
-    footer {
-        text-align: center;
-        color: #555;
-        font-size: 13px;
-        margin: 40px 0;
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-15px); }
-        100% { transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
+/* Animaciones */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fly {
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(50px) translateY(-30px); }
+    100% { transform: translateX(-50px) translateY(0); }
+}
 </style>
 </head>
 <body>
@@ -158,12 +159,11 @@
 
 <header>
     <img src="logo.png" class="logo" alt="Ultimate Glory Logo">
-    <h1 class="title">Ultimate Glory Esport</h1>
 </header>
 
 <div class="info-box">
     <h3>📌 Sobre Nosotros</h3>
-    <p>Ultimate Glory es un equipo competitivo de Free Fire enfocado en disciplina, estrategia y rendimiento profesional. Buscamos jugadores serios, responsables y con aspiraciones reales de competir en torneos nacionales e internacionales.</p>
+    <p>Ultimate Glory es un equipo competitivo de Free Fire enfocado en disciplina, estrategia y rendimiento profesional. Participamos en torneos nacionales e internacionales.</p>
     <ul>
         <li>Mínimo 15 años</li>
         <li>Discord obligatorio</li>
@@ -178,7 +178,7 @@
     <form id="reclutamientoForm">
         <input type="text" id="nombre" placeholder="Nombre completo" required>
         <input type="text" id="idjuego" placeholder="ID dentro del juego" required>
-        <input type="text" id="nick" placeholder="Nombre dentro del juego" readonly>
+        <input type="text" id="nick" placeholder="Nombre dentro del juego" required>
         <input type="number" id="edad" placeholder="Edad" required>
         <input type="text" id="discord" placeholder="Usuario de Discord" required>
         <input type="tel" id="whatsapp" placeholder="Número de WhatsApp (+52...)" pattern="^\+?\d{10,15}$" required>
@@ -201,6 +201,10 @@
 
 <footer>
     © 2025 Ultimate Glory Esport. Todos los derechos reservados.
+    <img src="bee.png" class="bee" style="top:10px; left:20px;">
+    <img src="bee.png" class="bee" style="top:40px; left:120px;">
+    <img src="flower.png" class="flower" style="top:20px; left:250px;">
+    <img src="flower.png" class="flower" style="top:50px; left:400px;">
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
@@ -213,16 +217,6 @@ particlesJS("particles-js", {
         size: { value: 2 },
         move: { speed: 0.8 },
         line_linked: { enable: false }
-    }
-});
-
-// Simulación: Cuando ingresan ID de FF, se autocompleta el Nick (puede reemplazarse con API real)
-document.getElementById("idjuego").addEventListener("input", function(){
-    const id = this.value;
-    if(id.length > 3){
-        document.getElementById("nick").value = "Jugador_" + id; // ejemplo
-    } else {
-        document.getElementById("nick").value = "";
     }
 });
 
@@ -258,8 +252,7 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
     .then(response => {
         if(response.ok){
             document.getElementById("form-box").style.display = "none";
-            const success = document.getElementById("successMessage");
-            success.style.display = "block";
+            document.getElementById("successMessage").style.display = "block";
         } else {
             alert("Hubo un error al enviar la solicitud.");
         }
