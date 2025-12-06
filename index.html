@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ultimate Glory Esport - Reclutamiento</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
@@ -30,14 +29,15 @@ body {
 header {
     text-align: center;
     padding: 40px 20px;
+    position: relative;
 }
 .logo {
-    width: 200px;
+    width: 180px;
     animation: float 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 20px #7CFC00); /* glow verde Minecraft */
+    filter: drop-shadow(0 0 25px #00ffff);
 }
 
-/* Cajas de información y formulario */
+/* Cajas de info y formulario */
 .info-box, .form-box, .success-box {
     width: 90%;
     max-width: 650px;
@@ -47,10 +47,11 @@ header {
     background: #1e1e1e;
     border: 2px solid #3a3a3a;
     box-shadow: 0 0 25px #000;
+    animation: fadeUp 1s ease;
 }
 
 .info-box h3, .form-box h3 {
-    color: #7CFC00;
+    color: #00ffff;
     margin-bottom: 15px;
     font-weight: 700;
 }
@@ -62,7 +63,7 @@ header {
 }
 .info-box ul li::before {
     content: "✔ ";
-    color: #7CFC00;
+    color: #00ffff;
 }
 
 /* Inputs y botones */
@@ -79,8 +80,8 @@ input, select, textarea {
 }
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border: 1px solid #7CFC00;
-    box-shadow: 0 0 10px #7CFC00;
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 12px #00ffff;
 }
 button {
     width: 100%;
@@ -89,25 +90,33 @@ button {
     font-weight: 700;
     border: none;
     border-radius: 10px;
-    background: #7CFC00;
+    background: #00ffff;
     color: #000;
     cursor: pointer;
     transition: 0.3s;
     margin-top: 20px;
 }
 button:hover {
-    background: #64e000;
+    background: #00e5e5;
     transform: scale(1.05);
 }
 
-/* Mensaje de éxito */
+/* Mensaje de éxito con confeti */
 .success-box {
     display: none;
     text-align: center;
     animation: fadeIn 1s ease;
+    position: relative;
+}
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #00ffff;
+    animation: confettiFall 2s linear infinite;
 }
 .success-box h2 {
-    color: #7CFC00;
+    color: #00ffff;
     font-size: 28px;
     font-weight: 800;
     margin-bottom: 10px;
@@ -116,7 +125,7 @@ button:hover {
     color: #c7c7c7;
 }
 
-/* Footer con animaciones de abejas y flores */
+/* Footer animado */
 footer {
     text-align: center;
     color: #555;
@@ -130,7 +139,7 @@ footer {
 }
 .bee {
     width: 30px;
-    filter: drop-shadow(0 0 10px yellow);
+    filter: drop-shadow(0 0 15px yellow);
 }
 .flower {
     width: 25px;
@@ -139,8 +148,12 @@ footer {
 /* Animaciones */
 @keyframes float {
     0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-15px); }
     100% { transform: translateY(0); }
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -151,6 +164,10 @@ footer {
     50% { transform: translateX(50px) translateY(-30px); }
     100% { transform: translateX(-50px) translateY(0); }
 }
+@keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity:1; }
+    100% { transform: translateY(300px) rotate(360deg); opacity:0; }
+}
 </style>
 </head>
 <body>
@@ -159,6 +176,9 @@ footer {
 
 <header>
     <img src="logo.png" class="logo" alt="Ultimate Glory Logo">
+    <!-- abejitas volando alrededor -->
+    <img src="bee.png" class="bee" style="top:10px; left:20px;">
+    <img src="bee.png" class="bee" style="top:40px; left:120px;">
 </header>
 
 <div class="info-box">
@@ -201,8 +221,6 @@ footer {
 
 <footer>
     © 2025 Ultimate Glory Esport. Todos los derechos reservados.
-    <img src="bee.png" class="bee" style="top:10px; left:20px;">
-    <img src="bee.png" class="bee" style="top:40px; left:120px;">
     <img src="flower.png" class="flower" style="top:20px; left:250px;">
     <img src="flower.png" class="flower" style="top:50px; left:400px;">
 </footer>
@@ -211,11 +229,11 @@ footer {
 <script>
 particlesJS("particles-js", {
     particles: {
-        number: { value: 80 },
-        color: { value: "#555" },
+        number: { value: 90 },
+        color: { value: "#00ffff" },
         opacity: { value: 0.4 },
-        size: { value: 2 },
-        move: { speed: 0.8 },
+        size: { value: 2.5 },
+        move: { speed: 1 },
         line_linked: { enable: false }
     }
 });
@@ -248,18 +266,19 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
-    })
-    .then(response => {
-        if(response.ok){
-            document.getElementById("form-box").style.display = "none";
-            document.getElementById("successMessage").style.display = "block";
-        } else {
-            alert("Hubo un error al enviar la solicitud.");
+    }).then(() => {
+        document.getElementById("form-box").style.display = "none";
+        document.getElementById("successMessage").style.display = "block";
+
+        // Crear confeti
+        for(let i=0; i<40; i++){
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.left = Math.random() * window.innerWidth + "px";
+            confetti.style.background = i%2==0 ? "#00ffff" : "#7CFC00";
+            document.getElementById("successMessage").appendChild(confetti);
+            setTimeout(()=> confetti.remove(), 2000);
         }
-    })
-    .catch(error => {
-        console.error(error);
-        alert("No se pudo enviar la solicitud. Revisa tu conexión.");
     });
 });
 </script>
