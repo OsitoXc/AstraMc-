@@ -5,18 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ultimate Glory Esport - Reclutamiento</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
 <style>
+/* ---------------------- GENERAL ---------------------- */
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
-    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    background: radial-gradient(circle at top, #0a0f24, #07101a, #04080f);
     color: white;
     position: relative;
 }
 
-/* Contenedor de burbujas */
+/* ---------------------- BURBUJAS ---------------------- */
 #bubbles-container {
     position: fixed;
     top: 0;
@@ -26,8 +28,6 @@ body, html {
     z-index: -1;
     overflow: hidden;
 }
-
-/* Burbuja */
 .bubble {
     position: absolute;
     border-radius: 50%;
@@ -39,10 +39,10 @@ body, html {
     100% { transform: translateY(-100px) scale(1); opacity: 0; }
 }
 
-/* Header */
+/* ---------------------- HEADER ---------------------- */
 header {
     text-align: center;
-    padding: 60px 20px;
+    padding: 40px 20px 20px 20px;
 }
 .logo {
     width: 180px;
@@ -55,15 +55,15 @@ header {
     100% { transform: translateY(0); }
 }
 
-/* Secciones */
+/* ---------------------- SECCIONES ---------------------- */
 .section {
     width: 90%;
     max-width: 700px;
     margin: 30px auto;
-    background: rgba(0, 30, 50, 0.8);
+    background: rgba(0, 30, 50, 0.85);
     border-radius: 15px;
     padding: 25px;
-    box-shadow: 0 0 20px rgba(0,255,255,0.2);
+    box-shadow: 0 0 25px rgba(0,255,255,0.2);
 }
 .section h3 {
     color: #00ffff;
@@ -72,16 +72,17 @@ header {
 }
 .section p, .section ul {
     color: #c7f0f0;
+    line-height: 1.5;
 }
 .section ul {
     padding-left: 20px;
     list-style: none;
 }
 .section ul li::before {
-    content: "🟢 ";
+    content: "🫧 ";
 }
 
-/* Formulario */
+/* ---------------------- FORMULARIO ---------------------- */
 input, select, textarea, button {
     width: 100%;
     padding: 14px;
@@ -111,22 +112,34 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Mensaje de éxito */
+/* ---------------------- MENSAJE DE ÉXITO ---------------------- */
 .success-box {
     display: none;
     text-align: center;
     padding: 30px;
     background: rgba(0,30,50,0.9);
     border-radius: 15px;
-    box-shadow: 0 0 20px #00ffff;
+    box-shadow: 0 0 25px #00ffff;
 }
 
-/* Footer */
+/* ---------------------- FOOTER ---------------------- */
 footer {
     text-align: center;
     color: #a0e0e0;
     margin: 40px 0 20px 0;
     font-size: 14px;
+}
+
+/* ---------------------- RESPONSIVE ---------------------- */
+@media (max-width: 600px){
+    .section {
+        width: 95%;
+        padding: 20px;
+    }
+    input, select, textarea, button {
+        font-size: 14px;
+        padding: 12px;
+    }
 }
 </style>
 </head>
@@ -139,36 +152,88 @@ footer {
     <img src="logo.png" class="logo" alt="Logo Ultimate Glory">
 </header>
 
+<!-- SOBRE NOSOTROS -->
 <div class="section">
     <h3>📌 Sobre Nosotros</h3>
-    <p>¡Estamos comenzando! Por ahora somos solo 2 integrantes, pero nuestro objetivo es crecer, aprender y llegar muy lejos en torneos de Free Fire.</p>
+    <p>¡Estamos comenzando! Por ahora somos solo 2 integrantes, pero nuestro objetivo es crecer, aprender y llegar muy lejos en torneos de Free Fire.  
+    Nos apasiona la competencia, la estrategia y el compañerismo. Buscamos jugadores que compartan nuestra pasión y ganas de mejorar día a día.  
+    Únete a Ultimate Glory Esport y forma parte de un equipo activo, responsable y con visión de futuro.</p>
     <ul>
-        <li>Mínimo 15 años</li>
+        <li>Edad mínima: 15 años</li>
         <li>Discord obligatorio</li>
-        <li>WhatsApp verificado</li>
-        <li>Ser activo y comprometido</li>
+        <li>WhatsApp obligatorio</li>
+        <li>Cambio de nombre obligatorio</li>
+        <li>Ser comprometido y activo</li>
+        <li>1000 de honor semanal en el clan</li>
     </ul>
 </div>
 
+<!-- FORMULARIO -->
 <div class="section">
     <h3>📝 Formulario de Reclutamiento</h3>
     <form id="reclutamientoForm">
+
         <input type="text" id="nombre" placeholder="Nombre completo" required>
         <input type="text" id="idjuego" placeholder="ID dentro del juego" required>
         <input type="number" id="edad" placeholder="Edad" required>
+
+        <!-- Género -->
+        <select id="genero" required>
+            <option value="">Selecciona tu género</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+            <option value="Otro">Otro</option>
+        </select>
+
         <input type="text" id="discord" placeholder="Usuario de Discord" required>
-        <input type="tel" id="whatsapp" placeholder="Número de WhatsApp (+52...)" pattern="^\+?\d{10,15}$" required>
+
+        <!-- WhatsApp -->
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <select id="paisWhatsapp" required style="flex:1; min-width:120px; background: rgba(0,0,0,0.4); color:white; border:1px solid #00ffff; border-radius:10px; padding:14px;">
+                <option value="">País</option>
+                <option value="+52">México (+52)</option>
+                <option value="+54">Argentina (+54)</option>
+                <option value="+57">Colombia (+57)</option>
+                <option value="+56">Chile (+56)</option>
+                <option value="+51">Perú (+51)</option>
+                <option value="+58">Venezuela (+58)</option>
+            </select>
+            <input type="tel" id="whatsapp" placeholder="Número de WhatsApp" required style="flex:2;">
+        </div>
+
+        <!-- Rol principal -->
         <select id="rol" required>
             <option value="">Selecciona tu rol</option>
             <option value="Rusher">Rusher</option>
             <option value="Soporte/Granadero">Soporte / Granadero</option>
             <option value="Curandero">Curandero</option>
         </select>
+
+        <!-- Otros roles practicados -->
+        <select id="otrosroles" multiple size="6" required style="height:130px;">
+            <option value="Rusher">Rusher</option>
+            <option value="Soporte">Soporte</option>
+            <option value="Granadero">Granadero</option>
+            <option value="Curandero">Curandero</option>
+            <option value="IGL / Líder">IGL / Líder</option>
+            <option value="Francotirador">Francotirador</option>
+            <option value="Scout">Scout</option>
+            <option value="Capitán">Capitán</option>
+            <option value="Analista">Analista</option>
+        </select>
+
+        <!-- Horarios de disponibilidad -->
+        <textarea id="horarios" placeholder="Escribe tus horarios de disponibilidad" required></textarea>
+
+        <!-- Experiencia -->
         <textarea id="experiencia" placeholder="Explica tu experiencia (opcional)"></textarea>
+
         <button type="submit">Enviar Solicitud</button>
     </form>
 </div>
 
+<!-- MENSAJE DE ÉXITO -->
 <div class="success-box" id="successMessage">
     <h2>✔ Solicitud Enviada</h2>
     <p>Gracias por postularte a Ultimate Glory Esport.</p>
@@ -180,7 +245,7 @@ footer {
 </footer>
 
 <script>
-// Crear burbujas detrás del contenido
+// ---------------------- BURBUJAS ----------------------
 for(let i=0;i<50;i++){
     const bubble = document.createElement("div");
     bubble.classList.add("bubble");
@@ -190,10 +255,30 @@ for(let i=0;i<50;i++){
     document.getElementById("bubbles-container").appendChild(bubble);
 }
 
-// Enviar formulario al webhook de Discord
+// ---------------------- FORMULARIO ----------------------
 document.getElementById("reclutamientoForm").addEventListener("submit", function(e){
     e.preventDefault();
+
+    const pais = document.getElementById("paisWhatsapp").value;
+    const numero = document.getElementById("whatsapp").value.trim();
+
+    if(!pais || !numero){
+        alert("Por favor selecciona país e ingresa tu número de WhatsApp");
+        return;
+    }
+
+    // Validar longitud según país
+    const longitudes = {"+52":10, "+54":10, "+57":10, "+56":9, "+51":9, "+58":10};
+    if(numero.length != longitudes[pais]){
+        alert("Número inválido, revisa tu WhatsApp");
+        return;
+    }
+
+    const whatsappCompleto = pais + numero;
+
     const webhookURL = "https://discord.com/api/webhooks/1446923122472259709/4ju5LMe95nQMEYiBiDEocuhv2TozNrSyq-fv7xBt_7EYuNLWCqAy6pjw9DBoS_ZzSh-4";
+
+    const rolesSeleccionados = Array.from(document.getElementById("otrosroles").selectedOptions).map(o=>o.value).join(", ");
 
     const data = {
         embeds: [{
@@ -203,9 +288,12 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
                 { name: "Nombre", value: document.getElementById("nombre").value },
                 { name: "ID Juego", value: document.getElementById("idjuego").value },
                 { name: "Edad", value: document.getElementById("edad").value },
+                { name: "Género", value: document.getElementById("genero").value },
                 { name: "Discord", value: document.getElementById("discord").value },
-                { name: "WhatsApp", value: document.getElementById("whatsapp").value },
-                { name: "Rol", value: document.getElementById("rol").value },
+                { name: "WhatsApp", value: whatsappCompleto },
+                { name: "Rol principal", value: document.getElementById("rol").value },
+                { name: "Otros roles practicados", value: rolesSeleccionados },
+                { name: "Horarios de disponibilidad", value: document.getElementById("horarios").value },
                 { name: "Experiencia", value: document.getElementById("experiencia").value || "No especificó" }
             ],
             footer: { text: "Ultimate Glory Esport" }
@@ -219,6 +307,9 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
     }).then(() => {
         document.getElementById("reclutamientoForm").style.display = "none";
         document.getElementById("successMessage").style.display = "block";
+    }).catch(err=>{
+        alert("Ocurrió un error al enviar la solicitud. Intenta de nuevo.");
+        console.error(err);
     });
 });
 </script>
