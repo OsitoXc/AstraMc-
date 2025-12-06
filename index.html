@@ -90,6 +90,39 @@
     </style>
 
 </head>
+    <script>
+document.querySelector("form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nombre = e.target[0].value;
+    const edad = e.target[1].value;
+    const idFF = e.target[2].value;
+    const rol = e.target[3].value;
+    const experiencia = e.target[4].value;
+    const horario = e.target[5].value;
+
+    const mensaje = {
+        content: `
+📥 **Nueva Solicitud de Reclutamiento – Ultimate Glory**
+👤 **Nombre:** ${nombre}
+🔢 **Edad:** ${edad}
+🆔 **ID Free Fire:** ${idFF}
+🎯 **Rol:** ${rol}
+📊 **Experiencia:** ${experiencia}
+⏰ **Disponibilidad:** ${horario}
+        `
+    };
+
+    await fetch("https://discord.com/api/webhooks/1446923122472259709/4ju5LMe95nQMEYiBiDEocuhv2TozNrSyq-fv7xBt_7EYuNLWCqAy6pjw9DBoS_ZzSh-4", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(mensaje)
+    });
+
+    alert("Solicitud enviada correctamente! Revisa tu Discord.");
+    e.target.reset();
+});
+    </script>
 <body>
 
     <header>
