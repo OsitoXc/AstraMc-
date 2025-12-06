@@ -3,94 +3,160 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ultimate Glory eSports | Reclutamiento Free Fire</title>
+    <title>Ultimate Glory eSports – Reclutamiento</title>
 
     <style>
         body {
             margin: 0;
-            background: #0d0d0d;
-            font-family: Arial, sans-serif;
+            background: #0a0a0a;
+            font-family: "Segoe UI", Arial, sans-serif;
             color: #fff;
         }
 
         header {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, #111, #000);
+            padding: 50px 20px;
+        }
+
+        .logo-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 150px;
         }
 
         h1 {
             font-size: 3rem;
-            color: #ff4444;
-            letter-spacing: 2px;
-        }
-
-        h2 {
-            text-align: center;
-            margin-top: 40px;
+            color: #ff2f2f;
+            margin-bottom: 5px;
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.8;
         }
 
         .section {
-            padding: 40px 20px;
             max-width: 900px;
             margin: auto;
+            padding: 30px 20px;
         }
 
         .card {
             background: #111;
+            border-left: 5px solid #ff2f2f;
             padding: 25px;
-            margin-top: 20px;
-            border-radius: 12px;
-            border: 1px solid #222;
-            transition: 0.3s;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 15px #000;
         }
 
-        .card:hover {
-            border-color: #ff4444;
+        h2 {
+            color: #ff2f2f;
+            margin-bottom: 15px;
         }
 
-        form input, form select, form textarea {
+        ul {
+            line-height: 1.8;
+        }
+
+        /* Formularios */
+        form input, form textarea {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
-            border: none;
-            border-radius: 8px;
-            background: #222;
+            background: #1a1a1a;
+            border: 1px solid #333;
             color: #fff;
+            border-radius: 10px;
+            font-size: 1rem;
         }
 
         button {
             width: 100%;
-            padding: 15px;
-            background: #ff4444;
-            color: white;
-            font-size: 1.1rem;
+            background: #ff2f2f;
             border: none;
-            border-radius: 10px;
+            padding: 15px;
+            font-size: 1.1rem;
+            border-radius: 12px;
             cursor: pointer;
-            transition: 0.3s;
+            margin-top: 10px;
         }
 
         button:hover {
-            background: #ff2222;
+            background: #ff1a1a;
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            margin-top: 50px;
+            margin-top: 40px;
             background: #111;
-            font-size: 0.9rem;
+            font-size: .9rem;
         }
     </style>
-
 </head>
-    <script>
+<body>
+
+<header>
+    <div class="logo-box">
+        <!-- PON AQUÍ LA IMAGEN DE TU LOGO -->
+        <img src="logo.png" alt="Logo Ultimate Glory" class="logo">
+    </div>
+    <h1>Ultimate Glory eSports</h1>
+    <div class="subtitle">Reclutamiento oficial – Free Fire</div>
+</header>
+
+<section class="section">
+    <div class="card">
+        <h2>¿Quiénes Somos?</h2>
+        <p>
+            Ultimate Glory (UG) es un equipo competitivo recién formado, actualmente integrado por 
+            2 personas del staff (Líder y Co-Líder).  
+        </p>
+        <p>
+            Buscamos jugadores con disciplina, compromiso y ganas de crecer dentro del competitivo de Free Fire.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Requisitos Oficiales</h2>
+        <ul>
+            <li>✔ Tener **mínimo 15 años**</li>
+            <li>✔ Ser activo en scrims y entrenamientos</li>
+            <li>✔ Respetuoso, no tóxico</li>
+            <li>✔ Obligatorio unirte al **Discord del equipo**</li>
+            <li>✔ Obligatorio proporcionar **número de WhatsApp**</li>
+            <li>✔ Estar dispuesto a un **cambio de nombre** (tag UG)</li>
+            <li>✔ Buen rendimiento en BR y/o CS</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Formulario de Reclutamiento</h2>
+        <form>
+            <input type="text" placeholder="Nombre / Nickname" required>
+            <input type="number" placeholder="Edad" required>
+            <input type="text" placeholder="ID de Free Fire" required>
+            <input type="text" placeholder="Rol (Rush, Medio, Franco, Soporte)" required>
+            <input type="text" placeholder="Número de WhatsApp" required>
+            <textarea placeholder="Experiencia en scrims/ligas" rows="4" required></textarea>
+            <input type="text" placeholder="Disponibilidad horaria" required>
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    © 2025 Ultimate Glory eSports – Todos los derechos reservados.
+</footer>
+
+<script>
 document.querySelector("form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -98,16 +164,18 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     const edad = e.target[1].value;
     const idFF = e.target[2].value;
     const rol = e.target[3].value;
-    const experiencia = e.target[4].value;
-    const horario = e.target[5].value;
+    const whatsapp = e.target[4].value;
+    const experiencia = e.target[5].value;
+    const horario = e.target[6].value;
 
     const mensaje = {
         content: `
-📥 **Nueva Solicitud de Reclutamiento – Ultimate Glory**
+📥 **Nueva Solicitud – Ultimate Glory**
 👤 **Nombre:** ${nombre}
 🔢 **Edad:** ${edad}
-🆔 **ID Free Fire:** ${idFF}
+🆔 **ID FF:** ${idFF}
 🎯 **Rol:** ${rol}
+📞 **WhatsApp:** ${whatsapp}
 📊 **Experiencia:** ${experiencia}
 ⏰ **Disponibilidad:** ${horario}
         `
@@ -119,61 +187,10 @@ document.querySelector("form").addEventListener("submit", async (e) => {
         body: JSON.stringify(mensaje)
     });
 
-    alert("Solicitud enviada correctamente! Revisa tu Discord.");
+    alert("Solicitud enviada correctamente. Revisa tu Discord.");
     e.target.reset();
 });
-    </script>
-<body>
-
-    <header>
-        <h1>Ultimate Glory eSports</h1>
-        <div class="subtitle">Reclutamiento Oficial – Free Fire</div>
-    </header>
-
-    <section class="section">
-        <h2>¿Quiénes Somos?</h2>
-        <div class="card">
-            <p>
-                Ultimate Glory (UG) es un equipo competitivo de Free Fire que busca jugadores con disciplina,
-                rendimiento y visión de crecer en el competitivo.  
-            </p>
-            <p>
-                Estamos reclutando **nuevos integrantes** para scrims, torneos, ligas y proyectos futuros.
-            </p>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Requisitos</h2>
-        <div class="card">
-            <ul>
-                <li>Ser activo en scrims/entrenamientos.</li>
-                <li>Jugar serio y con respeto.</li>
-                <li>No tóxico.</li>
-                <li>Buen rendimiento en BR/CS.</li>
-                <li>Disponibilidad para horarios.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="section">
-        <h2>Formulario de Reclutamiento</h2>
-        <div class="card">
-            <form>
-                <input type="text" placeholder="Nombre / Nickname" required>
-                <input type="number" placeholder="Edad" required>
-                <input type="text" placeholder="ID de Free Fire" required>
-                <input type="text" placeholder="Rol (Rush, Medio, Soporte, Franco)" required>
-                <textarea placeholder="Experiencia en scrims/ligas" rows="4" required></textarea>
-                <input type="text" placeholder="Disponibilidad horaria" required>
-                <button type="submit">Enviar Solicitud</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        © 2025 Ultimate Glory eSports – Todos los derechos reservados.
-    </footer>
+</script>
 
 </body>
 </html>
