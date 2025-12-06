@@ -17,15 +17,13 @@
         color: white;
     }
 
-    /* Fondo animado GALAXY */
+    /* Fondo animado negro con partículas suaves */
     #particles-js {
         position: fixed;
         width: 100%;
         height: 100%;
         z-index: -1;
-        background: radial-gradient(circle at 20% 20%, #3a00ff55, transparent),
-                    radial-gradient(circle at 80% 80%, #ff00ff44, transparent),
-                    #000;
+        background: #000;
     }
 
     header {
@@ -35,8 +33,8 @@
     }
 
     .logo {
-        width: 260px;
-        filter: drop-shadow(0 0 25px #8b00ff) drop-shadow(0 0 40px #00aaff);
+        width: 230px;
+        filter: drop-shadow(0 0 20px #222);
         animation: float 4s ease-in-out infinite;
     }
 
@@ -44,27 +42,26 @@
         margin-top: 15px;
         font-size: 38px;
         font-weight: 800;
-        background: linear-gradient(90deg, #9b00ff, #00c8ff);
-        -webkit-background-clip: text;
-        color: transparent;
-        text-shadow: 0 0 20px #7b00ff;
+        color: white;
+        letter-spacing: 1.5px;
     }
 
     .embed-box {
         width: 90%;
         max-width: 600px;
-        background: #0d0d16dd;
+        background: #0f0f0f;
         margin: 20px auto;
         border-radius: 15px;
         padding: 25px;
-        border-left: 4px solid #9b00ff;
-        box-shadow: 0 0 15px #000;
+        border: 1px solid #1c1c1c;
+        box-shadow: 0 0 20px #000;
         animation: fadeUp 1s ease;
     }
 
     .embed-box h3 {
-        color: #c080ff;
+        color: #9f9f9f;
         margin-bottom: 10px;
+        font-weight: 600;
     }
 
     input, select, textarea {
@@ -73,15 +70,17 @@
         margin-top: 12px;
         border-radius: 10px;
         border: none;
-        background: #1a1a28;
+        background: #151515;
         color: white;
         font-size: 15px;
         transition: 0.2s;
+        border: 1px solid #222;
     }
 
     input:focus, select:focus, textarea:focus {
         outline: none;
-        box-shadow: 0 0 10px #9b00ff;
+        background: #1c1c1c;
+        border: 1px solid #333;
     }
 
     button {
@@ -92,43 +91,42 @@
         font-weight: 700;
         border: none;
         border-radius: 10px;
-        background: linear-gradient(90deg, #8b00ff, #00c0ff);
+        background: #1a1a1a;
         color: white;
         cursor: pointer;
         transition: 0.25s;
-        box-shadow: 0 0 15px #4a0088;
+        border: 1px solid #333;
     }
 
     button:hover {
-        transform: scale(1.03);
-        box-shadow: 0 0 20px #8b00ff;
+        background: #222;
+        transform: scale(1.02);
     }
 
     /* Mensaje de envío */
     .success-box {
         display: none;
         text-align: center;
-        background: #0d0d16dd;
+        background: #0f0f0f;
         width: 90%;
         max-width: 500px;
         margin: 0 auto;
         padding: 40px;
         border-radius: 15px;
-        border-left: 4px solid #00c8ff;
-        box-shadow: 0 0 20px #005577;
+        border: 1px solid #222;
+        box-shadow: 0 0 20px #000;
         animation: fadeIn 1s ease;
     }
 
     .success-box h2 {
-        background: linear-gradient(90deg, #9b00ff, #00d0ff);
-        -webkit-background-clip: text;
-        color: transparent;
+        color: white;
         font-size: 28px;
+        font-weight: 700;
     }
 
     .success-box p {
         margin-top: 10px;
-        color: #d0d0ff;
+        color: #c7c7c7;
     }
 
     /* ANIMACIONES */
@@ -160,14 +158,14 @@
 
 <div class="embed-box">
     <h3>📌 Sobre Nosotros</h3>
-    <p>Somos un equipo competitivo de Free Fire con visión profesional, disciplina y enfoque en alto rendimiento.</p>
-    <p>Buscamos jugadores que quieran crecer, competir y representar con orgullo a <b>Ultimate Glory</b>.</p>
+    <p>Ultimate Glory es un equipo competitivo de Free Fire enfocado en disciplina, estrategia y rendimiento profesional.</p>
+    <p>Buscamos jugadores serios, responsables y con aspiraciones reales de competir.</p>
     <ul>
-        <li>📌 Mínimo 15 años</li>
-        <li>📌 Discord obligatorio</li>
-        <li>📌 WhatsApp obligatorio</li>
-        <li>📌 Cambio de nombre obligatorio</li>
-        <li>📌 Compromiso y actividad</li>
+        <li>✔ Mínimo 15 años</li>
+        <li>✔ Discord obligatorio</li>
+        <li>✔ WhatsApp obligatorio</li>
+        <li>✔ Cambio de nombre obligatorio</li>
+        <li>✔ Ser activo y comprometido</li>
     </ul>
 </div>
 
@@ -179,7 +177,7 @@
         <input type="text" id="nick" placeholder="Nombre dentro del juego" required>
         <input type="number" id="edad" placeholder="Edad" required>
 
-        <input type="text" id="discord" placeholder="Usuario de Discord (Ej: nombre#0000)" required>
+        <input type="text" id="discord" placeholder="Usuario de Discord" required>
         <input type="text" id="whatsapp" placeholder="Número de WhatsApp" required>
 
         <select id="rol" required>
@@ -189,7 +187,7 @@
             <option value="Curandero">Curandero</option>
         </select>
 
-        <textarea id="experiencia" placeholder="Cuéntanos tu experiencia (opcional)"></textarea>
+        <textarea id="experiencia" placeholder="Explica tu experiencia (opcional)"></textarea>
 
         <button type="submit">Enviar Solicitud</button>
     </form>
@@ -197,26 +195,25 @@
 
 <div class="success-box" id="successMessage">
     <h2>✔ Solicitud Enviada</h2>
-    <p>Tu solicitud fue enviada correctamente.</p>
-    <p>📩 En breve nuestro equipo se comunicará contigo por WhatsApp o Discord.</p>
+    <p>Gracias por postularte a Ultimate Glory.</p>
+    <p>📩 Te contactaremos por WhatsApp o Discord.</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
 <script>
-/* Configurar partículas */
 particlesJS("particles-js", {
     particles: {
-        number: { value: 90 },
-        color: { value: ["#9b00ff", "#00c8ff"] },
-        shape: { type: "circle" },
-        opacity: { value: 0.6 },
-        size: { value: 3 },
-        move: { speed: 1 }
+        number: { value: 80 },
+        color: { value: "#555" },
+        opacity: { value: 0.4 },
+        size: { value: 2 },
+        move: { speed: 0.8 },
+        line_linked: { enable: false }
     }
 });
 
-/* Enviar formulario con embed */
+/* Enviar formulario */
 document.getElementById("reclutamientoForm").addEventListener("submit", function(e){
     e.preventDefault();
 
@@ -224,8 +221,8 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
 
     const data = {
         embeds: [{
-            title: "📥 Nueva solicitud de reclutamiento",
-            color: 10181046,
+            title: "📥 Nueva solicitud de Ultimate Glory",
+            color: 0,
             fields: [
                 { name: "Nombre", value: nombre.value },
                 { name: "Nick", value: nick.value },
