@@ -6,7 +6,6 @@
 <title>Ultimate Glory Esport - Reclutamiento</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-/* Reset */
 body, html {
     margin: 0;
     padding: 0;
@@ -14,9 +13,21 @@ body, html {
     overflow-x: hidden;
     background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
     color: white;
+    position: relative;
 }
 
-/* Partículas / burbujas */
+/* Contenedor de burbujas */
+#bubbles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Burbuja */
 .bubble {
     position: absolute;
     border-radius: 50%;
@@ -32,7 +43,6 @@ body, html {
 header {
     text-align: center;
     padding: 60px 20px;
-    position: relative;
 }
 .logo {
     width: 180px;
@@ -54,7 +64,6 @@ header {
     border-radius: 15px;
     padding: 25px;
     box-shadow: 0 0 20px rgba(0,255,255,0.2);
-    animation: fadeUp 1s ease;
 }
 .section h3 {
     color: #00ffff;
@@ -102,7 +111,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Mensaje éxito */
+/* Mensaje de éxito */
 .success-box {
     display: none;
     text-align: center;
@@ -110,25 +119,9 @@ button:hover {
     background: rgba(0,30,50,0.9);
     border-radius: 15px;
     box-shadow: 0 0 20px #00ffff;
-    position: relative;
 }
 
-/* Animaciones generales */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-@keyframes confettiFall {
-    0% { transform: translateY(0) rotate(0deg); opacity:1; }
-    100% { transform: translateY(300px) rotate(360deg); opacity:0; }
-}
-.confetti {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    animation: confettiFall 2s linear infinite;
-}
+/* Footer */
 footer {
     text-align: center;
     color: #a0e0e0;
@@ -139,13 +132,16 @@ footer {
 </head>
 <body>
 
+<!-- Burbujas -->
+<div id="bubbles-container"></div>
+
 <header>
     <img src="logo.png" class="logo" alt="Logo Ultimate Glory">
 </header>
 
 <div class="section">
     <h3>📌 Sobre Nosotros</h3>
-    <p>El equipo se creó ayer y somos solo 2 integrantes por ahora. Queremos hacer muchas cosas, participar en torneos y llegar muy lejos.</p>
+    <p>¡Estamos comenzando! Por ahora somos solo 2 integrantes, pero nuestro objetivo es crecer, aprender y llegar muy lejos en torneos de Free Fire.</p>
     <ul>
         <li>Mínimo 15 años</li>
         <li>Discord obligatorio</li>
@@ -184,14 +180,14 @@ footer {
 </footer>
 
 <script>
-// Crear burbujas flotando
-for(let i=0; i<40; i++){
+// Crear burbujas detrás del contenido
+for(let i=0;i<50;i++){
     const bubble = document.createElement("div");
     bubble.classList.add("bubble");
     bubble.style.width = bubble.style.height = (5 + Math.random()*20) + "px";
     bubble.style.left = Math.random()*100 + "vw";
-    bubble.style.animationDuration = (5 + Math.random()*10) + "s";
-    document.body.appendChild(bubble);
+    bubble.style.animationDuration = (5 + Math.random()*15) + "s";
+    document.getElementById("bubbles-container").appendChild(bubble);
 }
 
 // Enviar formulario al webhook de Discord
@@ -221,18 +217,8 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
     }).then(() => {
-        document.querySelector(".form-box").style.display = "none";
+        document.getElementById("reclutamientoForm").style.display = "none";
         document.getElementById("successMessage").style.display = "block";
-
-        // Confeti burbujas
-        for(let i=0;i<40;i++){
-            const confetti = document.createElement("div");
-            confetti.classList.add("confetti");
-            confetti.style.left = Math.random()*window.innerWidth + "px";
-            confetti.style.background = i%2==0 ? "#00ffff" : "#7FFFD4";
-            document.getElementById("successMessage").appendChild(confetti);
-            setTimeout(()=> confetti.remove(), 2000);
-        }
     });
 });
 </script>
