@@ -17,7 +17,6 @@
         overflow-x: hidden;
     }
 
-    /* Fondo con partículas */
     #particles-js {
         position: fixed;
         width: 100%;
@@ -31,36 +30,30 @@
         padding: 50px 20px;
     }
 
-    /* Logo flotante con glow */
     .logo {
-        width: 200px;
+        width: 220px;
         animation: float 4s ease-in-out infinite;
-        filter: drop-shadow(0 0 20px #00fff7);
-        transition: transform 0.3s;
-    }
-
-    .logo:hover {
-        transform: scale(1.1);
+        filter: drop-shadow(0 0 25px #00fff7);
     }
 
     .title {
-        margin-top: 20px;
-        font-size: 38px;
+        margin-top: 15px;
+        font-size: 42px;
         font-weight: 800;
         color: #00fff7;
         letter-spacing: 1.5px;
-        text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+        text-shadow: 0 0 15px #00fff7, 0 0 25px #00fff7;
     }
 
     .info-box, .form-box, .success-box {
         width: 90%;
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 25px;
+        max-width: 650px;
+        margin: 25px auto;
+        padding: 30px;
         border-radius: 15px;
         background: #0f0f0f;
         border: 1px solid #1c1c1c;
-        box-shadow: 0 0 20px #000;
+        box-shadow: 0 0 25px #000;
     }
 
     .info-box h3, .form-box h3 {
@@ -69,12 +62,37 @@
         font-weight: 700;
     }
 
-    .info-box ul {
-        padding-left: 20px;
+    .info-box p, .info-box li {
+        font-size: 15px;
+        line-height: 1.6;
     }
 
-    .info-box ul li {
-        margin-bottom: 10px;
+    .info-box ul {
+        padding-left: 20px;
+        list-style: none;
+    }
+
+    .info-box ul li::before {
+        content: "✔ ";
+        color: #00fff7;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 14px;
+        margin-top: 12px;
+        border-radius: 10px;
+        border: 1px solid #222;
+        background: #151515;
+        color: white;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        outline: none;
+        border: 1px solid #00fff7;
+        box-shadow: 0 0 10px #00fff7;
     }
 
     button {
@@ -96,23 +114,6 @@
         transform: scale(1.05);
     }
 
-    input, select, textarea {
-        width: 100%;
-        padding: 14px;
-        margin-top: 12px;
-        border-radius: 10px;
-        border: 1px solid #222;
-        background: #151515;
-        color: white;
-        font-size: 15px;
-        transition: 0.2s;
-    }
-
-    input:focus, select:focus, textarea:focus {
-        outline: none;
-        border: 1px solid #00fff7;
-    }
-
     .success-box {
         display: none;
         text-align: center;
@@ -123,12 +124,19 @@
         color: #00fff7;
         font-size: 28px;
         font-weight: 800;
-        text-shadow: 0 0 10px #00fff7;
+        text-shadow: 0 0 15px #00fff7;
         margin-bottom: 10px;
     }
 
     .success-box p {
         color: #c7c7c7;
+    }
+
+    footer {
+        text-align: center;
+        color: #555;
+        font-size: 13px;
+        margin: 40px 0;
     }
 
     @keyframes float {
@@ -141,6 +149,7 @@
         from { opacity: 0; }
         to { opacity: 1; }
     }
+
 </style>
 </head>
 <body>
@@ -154,25 +163,22 @@
 
 <div class="info-box">
     <h3>📌 Sobre Nosotros</h3>
-    <p>Ultimate Glory es un equipo competitivo de Free Fire enfocado en disciplina, estrategia y rendimiento profesional.</p>
+    <p>Ultimate Glory es un equipo competitivo de Free Fire enfocado en disciplina, estrategia y rendimiento profesional. Buscamos jugadores serios, responsables y con aspiraciones reales de competir en torneos nacionales e internacionales.</p>
     <ul>
-        <li>✔ Mínimo 15 años</li>
-        <li>✔ Discord obligatorio</li>
-        <li>✔ WhatsApp verificado</li>
-        <li>✔ Cambio de nombre obligatorio</li>
-        <li>✔ Ser activo y comprometido</li>
+        <li>Mínimo 15 años</li>
+        <li>Discord obligatorio</li>
+        <li>WhatsApp verificado</li>
+        <li>Cambio de nombre obligatorio</li>
+        <li>Ser activo y comprometido</li>
     </ul>
 </div>
 
-<div class="info-box">
-    <button id="joinBtn">📝 Quiero unirme</button>
-</div>
-
-<div class="form-box" id="form-box" style="display:none;">
-    <h3>Formulario de Reclutamiento</h3>
+<div class="form-box" id="form-box">
+    <h3>📝 Formulario de Reclutamiento</h3>
     <form id="reclutamientoForm">
         <input type="text" id="nombre" placeholder="Nombre completo" required>
         <input type="text" id="idjuego" placeholder="ID dentro del juego" required>
+        <input type="text" id="nick" placeholder="Nombre dentro del juego" readonly>
         <input type="number" id="edad" placeholder="Edad" required>
         <input type="text" id="discord" placeholder="Usuario de Discord" required>
         <input type="tel" id="whatsapp" placeholder="Número de WhatsApp (+52...)" pattern="^\+?\d{10,15}$" required>
@@ -193,6 +199,10 @@
     <p>📩 Te contactaremos por WhatsApp o Discord.</p>
 </div>
 
+<footer>
+    © 2025 Ultimate Glory Esport. Todos los derechos reservados.
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 <script>
 particlesJS("particles-js", {
@@ -206,11 +216,14 @@ particlesJS("particles-js", {
     }
 });
 
-// Mostrar formulario al hacer click en "Quiero unirme"
-document.getElementById("joinBtn").addEventListener("click", () => {
-    const formBox = document.getElementById("form-box");
-    formBox.style.display = "block";
-    formBox.scrollIntoView({behavior: "smooth"});
+// Simulación: Cuando ingresan ID de FF, se autocompleta el Nick (puede reemplazarse con API real)
+document.getElementById("idjuego").addEventListener("input", function(){
+    const id = this.value;
+    if(id.length > 3){
+        document.getElementById("nick").value = "Jugador_" + id; // ejemplo
+    } else {
+        document.getElementById("nick").value = "";
+    }
 });
 
 // Enviar formulario al webhook de Discord
@@ -226,6 +239,7 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
             fields: [
                 { name: "Nombre", value: document.getElementById("nombre").value },
                 { name: "ID Juego", value: document.getElementById("idjuego").value },
+                { name: "Nombre dentro del juego", value: document.getElementById("nick").value },
                 { name: "Edad", value: document.getElementById("edad").value },
                 { name: "Discord", value: document.getElementById("discord").value },
                 { name: "WhatsApp", value: document.getElementById("whatsapp").value },
@@ -243,19 +257,9 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
     })
     .then(response => {
         if(response.ok){
-            const formBox = document.getElementById("form-box");
-            const successMessage = document.getElementById("successMessage");
-
-            formBox.style.transition = "opacity 0.5s ease";
-            formBox.style.opacity = 0;
-
-            setTimeout(() => {
-                formBox.style.display = "none";
-                successMessage.style.display = "block";
-                successMessage.style.opacity = 0;
-                successMessage.style.transition = "opacity 0.5s ease";
-                setTimeout(() => { successMessage.style.opacity = 1; }, 50);
-            }, 500);
+            document.getElementById("form-box").style.display = "none";
+            const success = document.getElementById("successMessage");
+            success.style.display = "block";
         } else {
             alert("Hubo un error al enviar la solicitud.");
         }
