@@ -5,200 +5,160 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ultimate Glory Esport - Reclutamiento</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
 <style>
-body {
+/* Reset */
+body, html {
     margin: 0;
     padding: 0;
-    background: #0a0a0a;
     font-family: 'Poppins', sans-serif;
-    color: white;
     overflow-x: hidden;
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    color: white;
 }
 
-/* Partículas de fondo */
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(#0a0a0a, #1b1b1b);
+/* Partículas / burbujas */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0,255,255,0.3);
+    animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.3); opacity: 0.6; }
+    100% { transform: translateY(-100px) scale(1); opacity: 0; }
 }
 
-/* Header logo */
+/* Header */
 header {
     text-align: center;
-    padding: 40px 20px;
+    padding: 60px 20px;
     position: relative;
 }
 .logo {
     width: 180px;
-    animation: float 4s ease-in-out infinite;
     filter: drop-shadow(0 0 25px #00ffff);
+    animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
 }
 
-/* Cajas de info y formulario */
-.info-box, .form-box, .success-box {
+/* Secciones */
+.section {
     width: 90%;
-    max-width: 650px;
-    margin: 25px auto;
-    padding: 30px;
+    max-width: 700px;
+    margin: 30px auto;
+    background: rgba(0, 30, 50, 0.8);
     border-radius: 15px;
-    background: #1e1e1e;
-    border: 2px solid #3a3a3a;
-    box-shadow: 0 0 25px #000;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.2);
     animation: fadeUp 1s ease;
 }
-
-.info-box h3, .form-box h3 {
+.section h3 {
     color: #00ffff;
     margin-bottom: 15px;
     font-weight: 700;
 }
-
-/* Listas */
-.info-box ul {
+.section p, .section ul {
+    color: #c7f0f0;
+}
+.section ul {
     padding-left: 20px;
     list-style: none;
 }
-.info-box ul li::before {
-    content: "✔ ";
-    color: #00ffff;
+.section ul li::before {
+    content: "🟢 ";
 }
 
-/* Inputs y botones */
-input, select, textarea {
+/* Formulario */
+input, select, textarea, button {
     width: 100%;
     padding: 14px;
     margin-top: 12px;
     border-radius: 10px;
-    border: 1px solid #3a3a3a;
-    background: #151515;
-    color: white;
+    border: none;
     font-size: 15px;
     transition: 0.3s;
 }
+input, select, textarea {
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border: 1px solid #00ffff;
+}
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border: 1px solid #00ffff;
     box-shadow: 0 0 12px #00ffff;
 }
 button {
-    width: 100%;
-    padding: 15px;
-    font-size: 17px;
-    font-weight: 700;
-    border: none;
-    border-radius: 10px;
     background: #00ffff;
     color: #000;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
-    margin-top: 20px;
 }
 button:hover {
     background: #00e5e5;
     transform: scale(1.05);
 }
 
-/* Mensaje de éxito con confeti */
+/* Mensaje éxito */
 .success-box {
     display: none;
     text-align: center;
-    animation: fadeIn 1s ease;
+    padding: 30px;
+    background: rgba(0,30,50,0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00ffff;
     position: relative;
 }
-.confetti {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #00ffff;
-    animation: confettiFall 2s linear infinite;
-}
-.success-box h2 {
-    color: #00ffff;
-    font-size: 28px;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-.success-box p {
-    color: #c7c7c7;
-}
 
-/* Footer animado */
-footer {
-    text-align: center;
-    color: #555;
-    font-size: 14px;
-    margin: 40px 0 20px 0;
-    position: relative;
-}
-.bee, .flower {
-    position: absolute;
-    animation: fly 10s linear infinite;
-}
-.bee {
-    width: 30px;
-    filter: drop-shadow(0 0 15px yellow);
-}
-.flower {
-    width: 25px;
-}
-
-/* Animaciones */
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0); }
-}
+/* Animaciones generales */
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes fly {
-    0% { transform: translateX(0) translateY(0); }
-    50% { transform: translateX(50px) translateY(-30px); }
-    100% { transform: translateX(-50px) translateY(0); }
 }
 @keyframes confettiFall {
     0% { transform: translateY(0) rotate(0deg); opacity:1; }
     100% { transform: translateY(300px) rotate(360deg); opacity:0; }
 }
+.confetti {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: confettiFall 2s linear infinite;
+}
+footer {
+    text-align: center;
+    color: #a0e0e0;
+    margin: 40px 0 20px 0;
+    font-size: 14px;
+}
 </style>
 </head>
 <body>
 
-<div id="particles-js"></div>
-
 <header>
-    <img src="logo.png" class="logo" alt="Ultimate Glory Logo">
-    <!-- abejitas volando alrededor -->
-    <img src="bee.png" class="bee" style="top:10px; left:20px;">
-    <img src="bee.png" class="bee" style="top:40px; left:120px;">
+    <img src="logo.png" class="logo" alt="Logo Ultimate Glory">
 </header>
 
-<div class="info-box">
+<div class="section">
     <h3>📌 Sobre Nosotros</h3>
-    <p>Ultimate Glory es un equipo competitivo de Free Fire enfocado en disciplina, estrategia y rendimiento profesional. Participamos en torneos nacionales e internacionales.</p>
+    <p>El equipo se creó ayer y somos solo 2 integrantes por ahora. Queremos hacer muchas cosas, participar en torneos y llegar muy lejos.</p>
     <ul>
         <li>Mínimo 15 años</li>
         <li>Discord obligatorio</li>
         <li>WhatsApp verificado</li>
-        <li>Cambio de nombre obligatorio</li>
         <li>Ser activo y comprometido</li>
     </ul>
 </div>
 
-<div class="form-box" id="form-box">
+<div class="section">
     <h3>📝 Formulario de Reclutamiento</h3>
     <form id="reclutamientoForm">
         <input type="text" id="nombre" placeholder="Nombre completo" required>
         <input type="text" id="idjuego" placeholder="ID dentro del juego" required>
-        <input type="text" id="nick" placeholder="Nombre dentro del juego" required>
         <input type="number" id="edad" placeholder="Edad" required>
         <input type="text" id="discord" placeholder="Usuario de Discord" required>
         <input type="tel" id="whatsapp" placeholder="Número de WhatsApp (+52...)" pattern="^\+?\d{10,15}$" required>
@@ -221,27 +181,22 @@ footer {
 
 <footer>
     © 2025 Ultimate Glory Esport. Todos los derechos reservados.
-    <img src="flower.png" class="flower" style="top:20px; left:250px;">
-    <img src="flower.png" class="flower" style="top:50px; left:400px;">
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 <script>
-particlesJS("particles-js", {
-    particles: {
-        number: { value: 90 },
-        color: { value: "#00ffff" },
-        opacity: { value: 0.4 },
-        size: { value: 2.5 },
-        move: { speed: 1 },
-        line_linked: { enable: false }
-    }
-});
+// Crear burbujas flotando
+for(let i=0; i<40; i++){
+    const bubble = document.createElement("div");
+    bubble.classList.add("bubble");
+    bubble.style.width = bubble.style.height = (5 + Math.random()*20) + "px";
+    bubble.style.left = Math.random()*100 + "vw";
+    bubble.style.animationDuration = (5 + Math.random()*10) + "s";
+    document.body.appendChild(bubble);
+}
 
 // Enviar formulario al webhook de Discord
 document.getElementById("reclutamientoForm").addEventListener("submit", function(e){
     e.preventDefault();
-
     const webhookURL = "https://discord.com/api/webhooks/1446923122472259709/4ju5LMe95nQMEYiBiDEocuhv2TozNrSyq-fv7xBt_7EYuNLWCqAy6pjw9DBoS_ZzSh-4";
 
     const data = {
@@ -251,7 +206,6 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
             fields: [
                 { name: "Nombre", value: document.getElementById("nombre").value },
                 { name: "ID Juego", value: document.getElementById("idjuego").value },
-                { name: "Nombre dentro del juego", value: document.getElementById("nick").value },
                 { name: "Edad", value: document.getElementById("edad").value },
                 { name: "Discord", value: document.getElementById("discord").value },
                 { name: "WhatsApp", value: document.getElementById("whatsapp").value },
@@ -267,15 +221,15 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
     }).then(() => {
-        document.getElementById("form-box").style.display = "none";
+        document.querySelector(".form-box").style.display = "none";
         document.getElementById("successMessage").style.display = "block";
 
-        // Crear confeti
-        for(let i=0; i<40; i++){
+        // Confeti burbujas
+        for(let i=0;i<40;i++){
             const confetti = document.createElement("div");
             confetti.classList.add("confetti");
-            confetti.style.left = Math.random() * window.innerWidth + "px";
-            confetti.style.background = i%2==0 ? "#00ffff" : "#7CFC00";
+            confetti.style.left = Math.random()*window.innerWidth + "px";
+            confetti.style.background = i%2==0 ? "#00ffff" : "#7FFFD4";
             document.getElementById("successMessage").appendChild(confetti);
             setTimeout(()=> confetti.remove(), 2000);
         }
