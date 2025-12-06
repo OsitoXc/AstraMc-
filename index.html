@@ -12,12 +12,12 @@
         margin: 0;
         padding: 0;
         background: #000;
-        overflow-x: hidden;
         font-family: 'Poppins', sans-serif;
         color: white;
+        overflow-x: hidden;
     }
 
-    /* Fondo animado negro con partículas suaves */
+    /* Fondo con partículas */
     #particles-js {
         position: fixed;
         width: 100%;
@@ -29,39 +29,71 @@
     header {
         text-align: center;
         padding: 50px 20px;
-        animation: fadeIn 1s ease;
     }
 
+    /* Logo flotante con glow */
     .logo {
-        width: 230px;
-        filter: drop-shadow(0 0 20px #222);
+        width: 200px;
         animation: float 4s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px #00fff7);
+        transition: transform 0.3s;
+    }
+
+    .logo:hover {
+        transform: scale(1.1);
     }
 
     .title {
-        margin-top: 15px;
+        margin-top: 20px;
         font-size: 38px;
         font-weight: 800;
-        color: white;
+        color: #00fff7;
         letter-spacing: 1.5px;
+        text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
     }
 
-    .embed-box {
+    .info-box, .form-box, .success-box {
         width: 90%;
         max-width: 600px;
-        background: #0f0f0f;
         margin: 20px auto;
-        border-radius: 15px;
         padding: 25px;
+        border-radius: 15px;
+        background: #0f0f0f;
         border: 1px solid #1c1c1c;
         box-shadow: 0 0 20px #000;
-        animation: fadeUp 1s ease;
     }
 
-    .embed-box h3 {
-        color: #9f9f9f;
+    .info-box h3, .form-box h3 {
+        color: #00fff7;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .info-box ul {
+        padding-left: 20px;
+    }
+
+    .info-box ul li {
         margin-bottom: 10px;
-        font-weight: 600;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        font-size: 17px;
+        font-weight: 700;
+        border: none;
+        border-radius: 10px;
+        background: #00fff7;
+        color: #000;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background: #00d8c9;
+        transform: scale(1.05);
     }
 
     input, select, textarea {
@@ -69,81 +101,45 @@
         padding: 14px;
         margin-top: 12px;
         border-radius: 10px;
-        border: none;
+        border: 1px solid #222;
         background: #151515;
         color: white;
         font-size: 15px;
         transition: 0.2s;
-        border: 1px solid #222;
     }
 
     input:focus, select:focus, textarea:focus {
         outline: none;
-        background: #1c1c1c;
-        border: 1px solid #333;
+        border: 1px solid #00fff7;
     }
 
-    button {
-        width: 100%;
-        margin-top: 20px;
-        padding: 15px;
-        font-size: 17px;
-        font-weight: 700;
-        border: none;
-        border-radius: 10px;
-        background: #1a1a1a;
-        color: white;
-        cursor: pointer;
-        transition: 0.25s;
-        border: 1px solid #333;
-    }
-
-    button:hover {
-        background: #222;
-        transform: scale(1.02);
-    }
-
-    /* Mensaje de envío */
     .success-box {
         display: none;
         text-align: center;
-        background: #0f0f0f;
-        width: 90%;
-        max-width: 500px;
-        margin: 0 auto;
-        padding: 40px;
-        border-radius: 15px;
-        border: 1px solid #222;
-        box-shadow: 0 0 20px #000;
         animation: fadeIn 1s ease;
     }
 
     .success-box h2 {
-        color: white;
+        color: #00fff7;
         font-size: 28px;
-        font-weight: 700;
+        font-weight: 800;
+        text-shadow: 0 0 10px #00fff7;
+        margin-bottom: 10px;
     }
 
     .success-box p {
-        margin-top: 10px;
         color: #c7c7c7;
-    }
-
-    /* ANIMACIONES */
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes float {
         0% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
+        50% { transform: translateY(-15px); }
         100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 </style>
 </head>
@@ -152,55 +148,52 @@
 <div id="particles-js"></div>
 
 <header>
-    <img src="logo.png" class="logo">
+    <img src="logo.png" class="logo" alt="Ultimate Glory Logo">
     <h1 class="title">Ultimate Glory Esport</h1>
 </header>
 
-<div class="embed-box">
+<div class="info-box">
     <h3>📌 Sobre Nosotros</h3>
     <p>Ultimate Glory es un equipo competitivo de Free Fire enfocado en disciplina, estrategia y rendimiento profesional.</p>
-    <p>Buscamos jugadores serios, responsables y con aspiraciones reales de competir.</p>
     <ul>
         <li>✔ Mínimo 15 años</li>
         <li>✔ Discord obligatorio</li>
-        <li>✔ WhatsApp obligatorio</li>
+        <li>✔ WhatsApp verificado</li>
         <li>✔ Cambio de nombre obligatorio</li>
         <li>✔ Ser activo y comprometido</li>
     </ul>
 </div>
 
-<div class="embed-box" id="form-box">
-    <h3>📝 Formulario de Reclutamiento</h3>
+<div class="info-box">
+    <button id="joinBtn">📝 Quiero unirme</button>
+</div>
 
+<div class="form-box" id="form-box" style="display:none;">
+    <h3>Formulario de Reclutamiento</h3>
     <form id="reclutamientoForm">
         <input type="text" id="nombre" placeholder="Nombre completo" required>
-        <input type="text" id="nick" placeholder="Nombre dentro del juego" required>
+        <input type="text" id="idjuego" placeholder="ID dentro del juego" required>
         <input type="number" id="edad" placeholder="Edad" required>
-
         <input type="text" id="discord" placeholder="Usuario de Discord" required>
-        <input type="text" id="whatsapp" placeholder="Número de WhatsApp" required>
-
+        <input type="tel" id="whatsapp" placeholder="Número de WhatsApp (+52...)" pattern="^\+?\d{10,15}$" required>
         <select id="rol" required>
             <option value="">Selecciona tu rol</option>
             <option value="Rusher">Rusher</option>
             <option value="Soporte/Granadero">Soporte / Granadero</option>
             <option value="Curandero">Curandero</option>
         </select>
-
         <textarea id="experiencia" placeholder="Explica tu experiencia (opcional)"></textarea>
-
         <button type="submit">Enviar Solicitud</button>
     </form>
 </div>
 
 <div class="success-box" id="successMessage">
     <h2>✔ Solicitud Enviada</h2>
-    <p>Gracias por postularte a Ultimate Glory.</p>
+    <p>Gracias por postularte a Ultimate Glory Esport.</p>
     <p>📩 Te contactaremos por WhatsApp o Discord.</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
 <script>
 particlesJS("particles-js", {
     particles: {
@@ -213,7 +206,14 @@ particlesJS("particles-js", {
     }
 });
 
-/* Enviar formulario */
+// Mostrar formulario al hacer click en "Quiero unirme"
+document.getElementById("joinBtn").addEventListener("click", () => {
+    const formBox = document.getElementById("form-box");
+    formBox.style.display = "block";
+    formBox.scrollIntoView({behavior: "smooth"});
+});
+
+// Enviar formulario al webhook de Discord
 document.getElementById("reclutamientoForm").addEventListener("submit", function(e){
     e.preventDefault();
 
@@ -222,15 +222,15 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
     const data = {
         embeds: [{
             title: "📥 Nueva solicitud de Ultimate Glory",
-            color: 0,
+            color: 3447003,
             fields: [
-                { name: "Nombre", value: nombre.value },
-                { name: "Nick", value: nick.value },
-                { name: "Edad", value: edad.value },
-                { name: "Discord", value: discord.value },
-                { name: "WhatsApp", value: whatsapp.value },
-                { name: "Rol", value: rol.value },
-                { name: "Experiencia", value: experiencia.value || "No especificó" }
+                { name: "Nombre", value: document.getElementById("nombre").value },
+                { name: "ID Juego", value: document.getElementById("idjuego").value },
+                { name: "Edad", value: document.getElementById("edad").value },
+                { name: "Discord", value: document.getElementById("discord").value },
+                { name: "WhatsApp", value: document.getElementById("whatsapp").value },
+                { name: "Rol", value: document.getElementById("rol").value },
+                { name: "Experiencia", value: document.getElementById("experiencia").value || "No especificó" }
             ],
             footer: { text: "Ultimate Glory Esport" }
         }]
@@ -240,9 +240,29 @@ document.getElementById("reclutamientoForm").addEventListener("submit", function
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
-    }).then(() => {
-        document.getElementById("form-box").style.display = "none";
-        document.getElementById("successMessage").style.display = "block";
+    })
+    .then(response => {
+        if(response.ok){
+            const formBox = document.getElementById("form-box");
+            const successMessage = document.getElementById("successMessage");
+
+            formBox.style.transition = "opacity 0.5s ease";
+            formBox.style.opacity = 0;
+
+            setTimeout(() => {
+                formBox.style.display = "none";
+                successMessage.style.display = "block";
+                successMessage.style.opacity = 0;
+                successMessage.style.transition = "opacity 0.5s ease";
+                setTimeout(() => { successMessage.style.opacity = 1; }, 50);
+            }, 500);
+        } else {
+            alert("Hubo un error al enviar la solicitud.");
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        alert("No se pudo enviar la solicitud. Revisa tu conexión.");
     });
 });
 </script>
