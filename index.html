@@ -56,12 +56,49 @@ textarea{min-height:84px;resize:vertical}
 </head>
 <body>
 <div id="bubbles"></div>
-<div class="container">
-  <!-- Header / Logo -->
-  <div class="card header box" style="flex-direction:column">
-    <img src="logo.png" alt="UG Esport" class="logo">
-    <h1 class="h3" style="margin-top:6px">UG Esport - Reclutamiento</h1>
-  </div>
+<div class="container"><!-- Header / Logo -->
+<div class="card header box" style="flex-direction:column;position:relative;overflow:hidden">
+
+  <!-- Glow animado detrás del logo -->
+  <div style="
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:radial-gradient(circle, rgba(154,199,255,0.55), rgba(154,199,255,0.05), transparent);
+    animation: logoGlow 4s infinite ease-in-out;
+    top:-20px;
+    filter:blur(22px);
+    z-index:0;
+    border-radius:50%;
+  "></div>
+
+  <!-- Logo con movimiento suave -->
+  <img 
+    src="logo.png" 
+    alt="UG Esport" 
+    class="logo" 
+    style="position:relative;z-index:2;animation: floatLogo 3.6s infinite ease-in-out;"
+  >
+
+  <!-- Título corregido -->
+  <h1 class="h3" style="margin-top:8px;position:relative;z-index:2">
+    UG ESPORT - Reclutamiento
+  </h1>
+</div>
+
+<style>
+@keyframes floatLogo {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes logoGlow {
+  0% { transform: scale(1); opacity:0.7; }
+  50% { transform: scale(1.15); opacity:1; }
+  100% { transform: scale(1); opacity:0.7; }
+}
+</style>
 
   <!-- Information -->
   <div class="card box" style="margin-top:12px">
