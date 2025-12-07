@@ -5,119 +5,149 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UG Esport - Reclutamiento</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
 <style>
-:root{ --accent: #9ac7ff; --bg: #0c0f1a; --card: rgba(20,28,48,0.96); --muted: #d4e3ff; }
-body, html { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; overflow-x: hidden; background: linear-gradient(180deg,#070912 0%, #0c0f1a 100%); color: white; position: relative; -webkit-font-smoothing:antialiased; }
-#bubbles-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-.bubble { position: absolute; border-radius: 50%; background: rgba(154,199,255,0.12); animation: floatUp linear infinite; }
-@keyframes floatUp { 0% { transform: translateY(110vh) scale(0.2); opacity: 0.5; } 100% { transform: translateY(-150px) scale(1); opacity: 0; } }
-header { text-align: center; padding: 28px 18px 6px 18px; position: relative; z-index: 2; }
-.logo { width: 140px; filter: drop-shadow(0 0 16px var(--accent)); animation: float 4s ease-in-out infinite; }
-@keyframes float { 0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)} }
-.container { width: 100%; max-width: 920px; margin: 12px auto; padding: 0 12px; z-index: 2; position: relative; }
-.grid { display: grid; grid-template-columns: 1fr 360px; gap: 18px; align-items: start; }
-.card { background: var(--card); border-radius: 14px; padding: 18px; box-shadow: 0 6px 22px rgba(20,28,48,0.6); }
-.card h3{ color:var(--accent); margin:6px 0 12px; font-size:18px; text-align:left }
-.card p, .card ul{ color: var(--muted); font-size:14px; line-height:1.5 }
-.card ul{ padding-left:16px; list-style:none }
-.card ul li::before{ content:"• "; color:var(--accent); margin-right:6px }
-.sidebar { position: sticky; top: 18px; height: fit-content }
-.req-list{ display:flex; flex-direction:column; gap:8px }
-.req-item{ background: rgba(154,199,255,0.04); padding:10px; border-radius:10px; color:var(--muted); font-weight:600 }
-.form { display:flex; flex-direction:column; gap:10px }
-.form-group{ display:flex; flex-direction:column }
-.form-group label{ font-weight:700; color:var(--accent); font-size:13px; margin-bottom:6px }
-input, select, textarea, button{ font-family:inherit; }
-input, select, textarea{ padding:10px 12px; border-radius:10px; border:1px solid rgba(154,199,255,0.18); background:rgba(0,0,0,0.35); color:white; font-size:14px; transition:box-shadow .18s, transform .12s; width:100%; }
-input:focus, select:focus, textarea:focus{ outline:none; box-shadow:0 6px 20px rgba(154,199,255,0.10); transform:translateY(-1px) }
-select{ -webkit-appearance:none; appearance:none; padding-right:36px }
-textarea{ min-height:84px; resize:vertical }
-.small-input{ padding:8px 10px; font-size:13px }
-.checkbox-row{ display:flex; gap:8px; align-items:center; flex-wrap:wrap }
-.select-multiple{ min-height:110px }
-.whatsapp-row{ display:flex; gap:8px }
-.whatsapp-row select{ width:36%; min-width:110px }
-.whatsapp-row input{ flex:1 }
-.btn-row{ display:flex; justify-content:flex-end; margin-top:6px }
-button.submit-btn{ background:var(--accent); color:#001; font-weight:800; padding:12px 16px; border-radius:10px; border:none; cursor:pointer; transition:transform .12s, filter .12s }
-button.submit-btn:hover{ transform:scale(1.03); filter:brightness(.98) }
-.success-box{ display:none; text-align:center; padding:22px; border-radius:12px; animation: popIn .36s ease both }
-@keyframes popIn{ from{ transform:scale(.92); opacity:0 } to{ transform:scale(1); opacity:1 } }
-.check{ width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg,var(--accent), #77b0ff); display:inline-flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(120,170,255,0.18) }
-.check svg{ filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2)) }
-.confetti{ position: absolute; left:50%; transform:translateX(-50%); top:10px; pointer-events:none }
-.confetti span{ display:inline-block; width:8px; height:8px; border-radius:3px; margin:0 4px; opacity:0; animation: popConf .9s ease forwards }
-.confetti span:nth-child(1){ background:#ffd166; animation-delay:.05s }
-.confetti span:nth-child(2){ background:#06d6a0; animation-delay:.12s }
-.confetti span:nth-child(3){ background:#ff6b6b; animation-delay:.18s }
-@keyframes popConf{ from{ transform:translateY(0) scale(.6); opacity:0 } 50%{ opacity:1; transform:translateY(-18px) scale(1) } to{ transform:translateY(-60px) scale(.8); opacity:0 } }
-footer{ text-align:center; color:var(--muted); font-size:13px; padding:18px 8px; margin-top:12px }
-@media (max-width:980px){ .grid{ grid-template-columns: 1fr } .sidebar{ position:relative; top:0 } }
-@media (max-width:600px){ .card{ padding:14px } .logo{ width:120px } .whatsapp-row select{ width:40% } }
+:root{ --accent:#9ac7ff; --bg:#0c0f1a; --card:rgba(20,28,48,0.96); --muted:#d4e3ff; }
+*{box-sizing:border-box}
+body,html{margin:0;padding:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,#070912,#0c0f1a);color:#fff}
+.container{width:100%;max-width:920px;margin:18px auto;padding:12px}
+.card{background:var(--card);border-radius:14px;padding:18px;box-shadow:0 6px 22px rgba(0,0,0,0.5);}
+.header{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:8px}
+.logo{width:120px}
+.h3{color:var(--accent);font-weight:700;margin:0 0 10px 0;font-size:18px}
+.p-muted{color:var(--muted);font-size:14px;line-height:1.5;margin:0}
+
+/* boxed text for better mobile reading */
+.box{background:rgba(0,0,0,0.28);padding:12px;border-radius:10px;border:1px solid rgba(154,199,255,0.06)}
+
+/* requirements list */
+.req-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.req-item{background:rgba(154,199,255,0.04);padding:10px;border-radius:10px;color:var(--muted);font-weight:600}
+
+/* form */
+.form{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;gap:10px}
+.col{flex:1}
+label{display:block;font-weight:700;color:var(--accent);font-size:13px;margin-bottom:6px}
+input,select,textarea,button{font-family:inherit}
+input,select,textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(154,199,255,0.12);background:rgba(0,0,0,0.36);color:#fff;font-size:14px}
+select{appearance:none}
+textarea{min-height:84px;resize:vertical}
+.small{padding:9px;font-size:13px}
+.flex-between{display:flex;justify-content:space-between;align-items:center}
+
+/* button */
+.btn{background:var(--accent);color:#001;font-weight:800;padding:12px 16px;border-radius:10px;border:none;cursor:pointer}
+.btn:active{transform:scale(.995)}
+
+/* success */
+.success{display:none;padding:16px;border-radius:12px;text-align:center}
+.check{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#77b0ff);display:inline-flex;align-items:center;justify-content:center;margin:auto}
+
+/* footer frame */
+.footer{max-width:920px;margin:18px auto;padding:8px;border-radius:10px;border:1px solid rgba(154,199,255,0.06);text-align:center;color:var(--muted);font-size:13px}
+
+/* bubbles */
+#bubbles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.bub{position:absolute;border-radius:50%;background:rgba(154,199,255,0.08);opacity:.6}
+
+/* responsive tweaks */
+@media (max-width:720px){.row{flex-direction:column}.logo{width:100px}.card{padding:14px}.h3{font-size:16px}.p-muted{font-size:13px}}
 </style>
 </head>
 <body>
-
-<div id="bubbles-container"></div>
-<header>
-  <img src="logo.png" alt="UG Esport" class="logo">
-</header>
-
+<div id="bubbles"></div>
 <div class="container">
-  <div class="grid">
+  <!-- Header / Logo -->
+  <div class="card header box" style="flex-direction:column">
+    <img src="logo.png" alt="UG Esport" class="logo">
+    <h1 class="h3" style="margin-top:6px">UG Esport - Reclutamiento</h1>
+  </div>
 
-    <!-- FORM AREA -->
-    <div class="card">
-      <h3>📝 Formulario de Reclutamiento</h3>
-      <p style="color:var(--muted);font-size:13px;margin-bottom:12px">Completa los campos con la información real. Los campos marcados son obligatorios. Al enviar, el staff revisará tu solicitud y te contactará.</p>
+  <!-- Information -->
+  <div class="card box" style="margin-top:12px">
+    <h2 class="h3">ℹ Información del Equipo</h2>
+    <p class="p-muted">Somos UG Esport, un proyecto competitivo en crecimiento dentro de Free Fire. Nuestro objetivo es formar un equipo disciplinado, activo y enfocado en mejorar constantemente.</p>
+  </div>
 
-      <form id="reclutamientoForm" class="form" autocomplete="off">
+  <!-- Requisitos -->
+  <div class="card box" style="margin-top:12px">
+    <h2 class="h3">📋 Requisitos</h2>
+    <div class="req-list">
+      <div class="req-item">Edad mínima: 15 años</div>
+      <div class="req-item">Discord obligatorio</div>
+      <div class="req-item">WhatsApp obligatorio y activo</div>
+      <div class="req-item">Compromiso con entrenos y scrims</div>
+      <div class="req-item">Cambio de nombre del clan al ser aceptado</div>
+      <div class="req-item">1000 de honor semanal (clan)</div>
+    </div>
+  </div>
 
-        <div class="form-group"><label>Nombre completo</label><input type="text" id="nombre" class="small-input" placeholder="Tu nombre" required></div>
+  <!-- Form (boxed, mobile-first) -->
+  <div class="card box" style="margin-top:12px">
+    <h2 class="h3">📝 Formulario de Reclutamiento</h2>
+    <p class="p-muted" style="margin-bottom:8px">Rellena el formulario. Los campos obligatorios están marcados. Al enviar, verás un mensaje de confirmación.</p>
 
-        <div class="form-group"><label>ID del juego</label><input type="text" id="idjuego" class="small-input" placeholder="Tu ID" required></div>
-
-        <div style="display:flex;gap:10px">
-          <div style="flex:1" class="form-group"><label>Edad</label><input type="number" id="edad" class="small-input" placeholder="Edad" required></div>
-          <div style="width:160px" class="form-group"><label>Género</label>
-            <select id="genero" class="small-input" required>
-              <option value="">Género</option>
-              <option>Masculino</option>
-              <option>Femenino</option>
-              <option>Prefiero no decirlo</option>
-              <option>Otro</option>
-            </select>
-          </div>
+    <form id="form" class="form" autocomplete="off">
+      <div class="row">
+        <div class="col">
+          <label for="nombre">Nombre completo *</label>
+          <input id="nombre" type="text" class="small" placeholder="Tu nombre" required>
         </div>
+      </div>
 
-        <div class="form-group"><label>Usuario de Discord</label><input type="text" id="discord" class="small-input" placeholder="usuario#0000" required></div>
-
-        <div class="form-group"><label>WhatsApp</label>
-          <div class="whatsapp-row">
-            <select id="paisWhatsapp" class="small-input" required>
-              <option value="">País</option>
-              <option value="+52">México (+52)</option>
-              <option value="+1">EE. UU. / Canadá (+1)</option>
-              <option value="+34">España (+34)</option>
-              <option value="+54">Argentina (+54)</option>
-              <option value="+57">Colombia (+57)</option>
-              <option value="+56">Chile (+56)</option>
-              <option value="+51">Perú (+51)</option>
-              <option value="+58">Venezuela (+58)</option>
-              <option value="+591">Bolivia (+591)</option>
-              <option value="+503">El Salvador (+503)</option>
-              <option value="+504">Honduras (+504)</option>
-              <option value="+505">Nicaragua (+505)</option>
-              <option value="+507">Panamá (+507)</option>
-              <option value="+509">República Dominicana (+509)</option>
-            </select>
-            <input type="tel" id="whatsapp" class="small-input" placeholder="Número (sin espacios)" required>
-          </div>
+      <div class="row">
+        <div class="col">
+          <label for="idjuego">ID del juego *</label>
+          <input id="idjuego" type="text" class="small" placeholder="Tu ID" required>
         </div>
+        <div style="width:120px">
+          <label for="edad">Edad *</label>
+          <input id="edad" type="number" class="small" placeholder="Edad" required>
+        </div>
+      </div>
 
-        <div class="form-group"><label>Rol principal</label>
-          <select id="rol" class="small-input" required>
+      <div class="row">
+        <div style="width:160px">
+          <label for="genero">Género</label>
+          <select id="genero" class="small">
+            <option value="">Género</option>
+            <option>Masculino</option>
+            <option>Femenino</option>
+            <option>Prefiero no decirlo</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="discord">Usuario de Discord *</label>
+          <input id="discord" type="text" class="small" placeholder="usuario#0000" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div style="width:140px">
+          <label for="pais">País *</label>
+          <select id="pais" class="small" required>
+            <option value="">País</option>
+            <option value="+52">México (+52)</option>
+            <option value="+1">EE. UU. / Canadá (+1)</option>
+            <option value="+34">España (+34)</option>
+            <option value="+54">Argentina (+54)</option>
+            <option value="+57">Colombia (+57)</option>
+            <option value="+56">Chile (+56)</option>
+            <option value="+51">Perú (+51)</option>
+            <option value="+58">Venezuela (+58)</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="whatsapp">WhatsApp *</label>
+          <input id="whatsapp" type="tel" class="small" placeholder="Número (sin espacios)" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="rol">Rol principal *</label>
+          <select id="rol" class="small" required>
             <option value="">Selecciona tu rol</option>
             <option>Rusher</option>
             <option>Soporte / Granadero</option>
@@ -126,113 +156,82 @@ footer{ text-align:center; color:var(--muted); font-size:13px; padding:18px 8px;
             <option>Francotirador</option>
           </select>
         </div>
-
-        <div class="form-group"><label>Otros roles (opcional)</label>
-          <select id="otrosroles" class="select-multiple small-input" multiple>
-            <option>Rusher</option>
-            <option>Soporte</option>
-            <option>Granadero</option>
-            <option>Curandero</option>
-            <option>IGL / Líder</option>
-            <option>Francotirador</option>
-            <option>Scout</option>
-            <option>Capitán</option>
-            <option>Analista</option>
-          </select>
-        </div>
-
-        <div class="form-group"><label>Horarios disponibles</label><textarea id="horarios" class="small-input" placeholder="Ej: L-V 18:00-22:00, sáb-dom tardes" required></textarea></div>
-
-        <div class="form-group"><label>Experiencia (opcional)</label><textarea id="experiencia" class="small-input" placeholder="Indica torneos, ligas o experiencia relevante"></textarea></div>
-
-        <div class="btn-row">
-          <button type="submit" class="submit-btn">Enviar Solicitud</button>
-        </div>
-
-      </form>
-
-      <div id="successMessage" class="success-box card" style="margin-top:12px; display:none">
-        <div class="check"><svg width="32" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h4 style="color:var(--accent); margin:10px 0 6px">Solicitud enviada</h4>
-        <p style="color:var(--muted); font-size:13px; margin:0">Gracias por postularte. Te contactaremos por WhatsApp o Discord.</p>
       </div>
 
-      <div class="confetti" id="confettiArea" style="height:0"></div>
+      <div class="row">
+        <div class="col">
+          <label for="horarios">Horarios disponibles *</label>
+          <textarea id="horarios" class="small" placeholder="Ej: L-V 18:00-22:00, sáb-dom tardes" required></textarea>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col">
+          <label for="experiencia">Experiencia (opcional)</label>
+          <textarea id="experiencia" class="small" placeholder="Indica torneos, ligas o experiencia relevante"></textarea>
+        </div>
+      </div>
+
+      <div class="flex-between" style="margin-top:6px">
+        <small class="p-muted">Al enviar aceptas que el staff contacte por WhatsApp o Discord.</small>
+        <button type="submit" class="btn">Enviar Solicitud</button>
+      </div>
+    </form>
+
+    <!-- info extra debajo del formulario -->
+    <div style="margin-top:12px" class="p-muted box">
+      <strong>Información:</strong> Asegúrate de escribir correctamente tu Discord y número. Las solicitudes se revisan en 72 horas. Si tu solicitud es aceptada, se te pedirá cambiar el nombre del clan al formato del equipo.
     </div>
 
-    <!-- SIDEBAR: REQUISITOS Y INFO -->
-    <aside class="sidebar">
-      <div class="card">
-        <h3>📋 Requisitos</h3>
-        <div class="req-list">
-          <div class="req-item">Edad mínima: 15 años</div>
-          <div class="req-item">Discord obligatorio</div>
-          <div class="req-item">WhatsApp obligatorio y activo</div>
-          <div class="req-item">Compromiso con entrenos y scrims</div>
-          <div class="req-item">Cambio de nombre del clan al ser aceptado</div>
-          <div class="req-item">1000 de honor semanal (clan)</div>
-        </div>
-      </div>
+    <!-- success box -->
+    <div id="success" class="success card" style="margin-top:12px;display:none">
+      <div class="check"><svg width="32" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17l-5-5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3 class="h3" style="margin-top:10px">✔ Enviado correctamente</h3>
+      <p class="p-muted">Gracias por postularte. Te contactaremos por WhatsApp o Discord.</p>
+    </div>
 
-      <div class="card" style="margin-top:12px">
-        <h3>🔎 Más información</h3>
-        <p style="margin-bottom:6px">Selecciona correctamente tu país para validar el número. Si tienes dudas o quieres ayuda, contacta al staff en Discord.</p>
-        <p style="font-size:13px;color:var(--muted); margin:0">Al enviar, la solicitud llega al staff y será revisada en 72 horas aproximadamente.</p>
-      </div>
+  </div>
 
-    </aside>
-
+  <!-- footer frame -->
+  <div class="footer">
+    ©️ UG Esport 2025 — Todos los derechos reservados
   </div>
 </div>
 
-<footer>©️ UG Esport 2025</footer>
-
 <script>
-// Burbujas dinámicas
-(function createBubbles(){ const container = document.getElementById('bubbles-container'); for(let i=0;i<28;i++){ const b=document.createElement('div'); b.className='bubble'; const size = Math.round(8+Math.random()*32); b.style.width=b.style.height=size+'px'; b.style.left = Math.random()*100+'vw'; b.style.bottom = '-30px'; b.style.animationDuration = (6+Math.random()*16)+'s'; b.style.opacity = (0.15+Math.random()*0.5).toString(); container.appendChild(b); }})();
+// simple bubbles
+(function(){ const n=22; const parent=document.getElementById('bubbles'); for(let i=0;i<n;i++){ const d=document.createElement('div'); d.className='bub'; const s=8+Math.random()*36; d.style.width=d.style.height=s+'px'; d.style.left=(Math.random()*100)+'vw'; d.style.top=(Math.random()*100)+'vh'; d.style.opacity=0.15+Math.random()*0.5; parent.appendChild(d);} })();
 
-// Validación simple de WhatsApp por rangos (min-max dígitos)
-const phoneRules = {
-  '+52':[10,10], '+1':[10,10], '+34':[9,9], '+54':[10,10], '+57':[10,10], '+56':[9,9],
-  '+51':[9,9], '+58':[10,10], '+591':[8,8], '+503':[8,8], '+504':[8,8], '+505':[8,8],
-  '+507':[8,8], '+509':[8,8]
-};
+// phone validation rules
+const rules = {'+52':[10,10],'+1':[10,10],'+34':[9,9],'+54':[10,10],'+57':[10,10],'+56':[9,9],'+51':[9,9],'+58':[10,10]};
 
-function showConfetti(){ const area = document.getElementById('confettiArea'); area.innerHTML = ''; const frag = document.createDocumentFragment(); for(let i=0;i<12;i++){ const s=document.createElement('span'); frag.appendChild(s); } area.appendChild(frag); setTimeout(()=> area.innerHTML='',900); }
+const form = document.getElementById('form');
+form.addEventListener('submit', async e=>{
+  e.preventDefault();
+  const pais = document.getElementById('pais').value;
+  const num = document.getElementById('whatsapp').value.replace(/\D/g,'');
+  if(!pais || !num){ alert('Selecciona país e ingresa número.'); return; }
+  const rule = rules[pais]; if(rule && (num.length < rule[0] || num.length > rule[1])){ alert('Número inválido para el país seleccionado.'); return; }
 
-// Envío a webhook
-const form = document.getElementById('reclutamientoForm');
-form.addEventListener('submit', async function(e){ e.preventDefault();
-  const pais = document.getElementById('paisWhatsapp').value;
-  const numero = document.getElementById('whatsapp').value.replace(/\s|\D/g,'');
-  if(!pais || !numero){ alert('Por favor selecciona país e ingresa tu número de WhatsApp.'); return; }
-  const rule = phoneRules[pais];
-  if(rule){ if(numero.length < rule[0] || numero.length > rule[1]){ alert('Número inválido para el país seleccionado. Revisa y vuelve a intentar.'); return; } }
-
-  // Payload al webhook de Discord (igual que en tu versión)
-  const webhookURL = 'https://discord.com/api/webhooks/1446923122472259709/4ju5LMe95nQMEYiBiDEocuhv2TozNrSyq-fv7xBt_7EYuNLWCqAy6pjw9DBoS_ZzSh-4';
-  const otrosSel = Array.from(document.getElementById('otrosroles').selectedOptions).map(o=>o.value).join(', ') || 'No especificó';
-  const payload = { embeds:[{ title:'📥 Nueva solicitud - UG Esport', color:3447003, fields:[
-    {name:'Nombre', value:document.getElementById('nombre').value || 'No especificó'},
-    {name:'ID Juego', value:document.getElementById('idjuego').value || 'No especificó'},
-    {name:'Edad', value:document.getElementById('edad').value || 'No especificó'},
-    {name:'Género', value:document.getElementById('genero').value || 'No especificó'},
-    {name:'Discord', value:document.getElementById('discord').value || 'No especificó'},
-    {name:'WhatsApp', value: pais + numero},
-    {name:'Rol principal', value:document.getElementById('rol').value || 'No especificó'},
-    {name:'Otros roles', value:otrosSel},
-    {name:'Horarios', value:document.getElementById('horarios').value || 'No especificó'},
-    {name:'Experiencia', value:document.getElementById('experiencia').value || 'No especificó'} ], footer:{ text:'UG Esport' } }] };
+  // prepare payload
+  const webhook = 'https://discord.com/api/webhooks/1446923122472259709/4ju5LMe95nQMEYiBiDEocuhv2TozNrSyq-fv7xBt_7EYuNLWCqAy6pjw9DBoS_ZzSh-4';
+  const payload = { embeds:[{ title:'Nueva solicitud - UG Esport', color:3447003, fields:[
+    {name:'Nombre', value:document.getElementById('nombre').value||'No especificó'},
+    {name:'ID Juego', value:document.getElementById('idjuego').value||'No especificó'},
+    {name:'Edad', value:document.getElementById('edad').value||'No especificó'},
+    {name:'Género', value:document.getElementById('genero').value||'No especificó'},
+    {name:'Discord', value:document.getElementById('discord').value||'No especificó'},
+    {name:'WhatsApp', value:pais+num},
+    {name:'Rol', value:document.getElementById('rol').value||'No especificó'},
+    {name:'Horarios', value:document.getElementById('horarios').value||'No especificó'},
+    {name:'Experiencia', value:document.getElementById('experiencia').value||'No especificó'}
+  ], footer:{text:'UG Esport'}}] };
 
   try{
-    await fetch(webhookURL, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-    form.style.display='none'; document.getElementById('successMessage').style.display='block'; showConfetti();
-  }catch(err){
-    console.error(err); alert('Ocurrió un error al enviar. Intenta de nuevo más tarde.');
-  }
+    await fetch(webhook, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    form.style.display='none'; document.getElementById('success').style.display='block';
+  }catch(err){ console.error(err); alert('Error al enviar. Intenta más tarde.'); }
 });
 </script>
-
 </body>
 </html>
