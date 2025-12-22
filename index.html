@@ -409,7 +409,13 @@ textarea{min-height:84px;resize:vertical}
         </div>
         <div class="col">
           <label for="whatsapp">WhatsApp *</label>
-          <input id="whatsapp" type="tel" class="small" placeholder="Número (sin espacios)" required>
+          <input 
+  id="whatsapp"
+  type="tel"
+  class="small"
+  placeholder="Ej: 7221804540"
+  pattern="[0-9]{10,15}" 
+  required>
         </div>
       </div>
 
@@ -492,10 +498,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const num = whatsapp.value.replace(/\D/g,'');
 
-    if (!pais.value || !num) {
-      alert('Completa país y WhatsApp');
-      return;
-    }
+if (!pais.value) {
+  alert('Selecciona tu país');
+  return;
+}
+
+if (!num) {
+  alert('Ingresa tu número de WhatsApp');
+  return;
+}
+
+if (num.length < 10 || num.length > 15) {
+  alert('El número de WhatsApp no es válido.\nUsa formato internacional sin espacios.\nEjemplo: 7221804540');
+  return;
+}
 
     const webhook = 'https://discord.com/api/webhooks/1450886959953350777/A49F0KxLzV5Hfc9PSlLmWu55JSelEIWlqvEAEc6BElSlyasHp-aGhI_8c_9v_JyOSP46';
 
