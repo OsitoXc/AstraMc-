@@ -159,6 +159,96 @@ function toggle(){
   m.style.display = m.style.display==="flex"?"none":"flex";
 }
 </script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const MONITOR_WEBHOOK = 'https://discord.com/api/webhooks/1450887252988264558/IDu5HuD5ePZcoxamyIkU0dShPoYPhNjac-IrT7NH2-8-gEODFTLJtiq2eKZiwXZqtVa2';
+
+  /* ===== VISIT LOG ===== */
+  try{
+    const visitPayload = {
+      embeds:[{
+        title:'👀 Nueva visita',
+        color:7506394,
+        fields:[
+          {name:'🌐 Página', value:location.href},
+          {name:'🕒 Hora', value:new Date().toLocaleString()},
+          {name:'🖥 Resolución', value:`${screen.width}x${screen.height}`},
+          {name:'🌍 Idioma', value:navigator.language},
+          {name:'🧭 Plataforma', value:navigator.platform},
+          {name:'🧠 User-Agent', value:navigator.userAgent.slice(0,250)}
+        ],
+        footer:{text:'United Glory | Monitor'}
+      }]
+    };
+
+    fetch(MONITOR_WEBHOOK,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(visitPayload)
+    });
+  }catch(e){}
+
+  /* ===== GLOBAL JS ERROR HANDLER ===== */
+  window.onerror = function(message, source, lineno, colno, error){
+    const errorPayload = {
+      embeds:[{
+        title:'❌ Error JavaScript',
+        color:16711680,
+        fields:[
+          {name:'💥 Mensaje', value:String(message).slice(0,1024)},
+          {name:'📄 Archivo', value:source || 'Desconocido'},
+          {name:'📍 Línea', value:`${lineno}:${colno}`},
+          {name:'🕒 Hora', value:new Date().toLocaleString()},
+          {name:'🌐 Página', value:location.href}
+        ],
+        footer:{text:'United Glory | JS Error'}
+      }]
+    };
+
+    fetch(MONITOR_WEBHOOK,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(errorPayload)
+    });
+  };
+
+  /* ===== FETCH ERROR MONITOR ===== */
+  const originalFetch = window.fetch;
+  window.fetch = async (...args)=>{
+    try{
+      const res = await originalFetch(...args);
+      if(!res.ok){
+        throw new Error(`Fetch failed: ${res.status}`);
+      }
+      return res;
+    }catch(err){
+      const fetchErrorPayload = {
+        embeds:[{
+          title:'⚠️ Fetch Error',
+          color:16753920,
+          fields:[
+            {name:'📡 Request', value:String(args[0]).slice(0,1024)},
+            {name:'❗ Error', value:err.message},
+            {name:'🕒 Hora', value:new Date().toLocaleString()},
+            {name:'🌐 Página', value:location.href}
+          ],
+          footer:{text:'United Glory | Network'}
+        }]
+      };
+
+      fetch(MONITOR_WEBHOOK,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(fetchErrorPayload)
+      });
+
+      throw err;
+    }
+  };
+
+});
+</script>
 
 </body>
 </html>
