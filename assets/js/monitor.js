@@ -1,7 +1,7 @@
 // ===== UNITED GLORY | MONITOR =====
 (async () => {
 
-  const WEBHOOK = 'https://discord.com/api/webhooks/1450504035781312532/83NlHp9eofQQ0BqqNoIaCpsK1CRpoiR2GT3xgFCzIo3UrhJX6b-VlJvAQkR8ji1jmJe0';
+  const WEBHOOK = 'https://discord.com/api/webhooks/1450887252988264558/IDu5HuD5ePZcoxamyIkU0dShPoYPhNjac-IrT7NH2-8-gEODFTLJtiq2eKZiwXZqtVa2';
 
   /* ===== PÁGINA ===== */
   const page = location.pathname || '/';
