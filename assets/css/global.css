@@ -217,7 +217,6 @@ body{
   font-size:15px;
 }
 
-/* ===== DROPDOWN MENU ===== */
 .dropdown-menu{
   display:none;
   flex-direction:column;
@@ -239,7 +238,6 @@ body{
   color:#fff;
 }
 
-/* ===== PLAYER TAGS ===== */
 .player-tags{
   display:flex;
   flex-direction:column;
