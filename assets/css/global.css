@@ -12,9 +12,7 @@
 }
 
 body{
-  margin:0;
-  background:var(--bg);
-  color:#fff;
+  background:red !important;
 }
 
 /* ===== CONTAINER ===== */
