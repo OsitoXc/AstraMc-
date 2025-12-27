@@ -325,3 +325,96 @@ body{
     opacity:.4;
   }
 }
+
+/* ===== PLAYER BADGES ===== */
+.avatar-wrap{
+  position:relative;
+  width:130px;
+  height:130px;
+  margin:0 auto 12px;
+}
+
+.avatar-wrap img:first-child{
+  width:110px;
+  height:110px;
+  border-radius:18px;
+  object-fit:cover;
+  border:2px solid var(--border);
+}
+
+/* BADGE */
+.badge{
+  position:absolute;
+  bottom:-6px;
+  right:-6px;
+  width:34px;
+  padding:4px;
+  border-radius:8px;
+  background:#000;
+}
+
+.igl-badge{
+  background:linear-gradient(135deg,#ff3b3b,#a30000);
+  box-shadow:0 0 12px rgba(255,0,0,.6);
+}
+
+.player-badge{
+  background:linear-gradient(135deg,#ffd700,#b8860b);
+  box-shadow:0 0 12px rgba(255,215,0,.5);
+}
+
+/* TAGS */
+.player-tags{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  margin-top:6px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  padding:5px 10px;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.igl-role{
+  background:rgba(255,0,0,.18);
+  color:#ff4d4d;
+}
+
+.gold{
+  background:rgba(255,215,0,.18);
+  color:#ffd700;
+}
+
+.country{
+  background:rgba(255,255,255,.06);
+  color:var(--muted);
+}
+
+/* 🌸 PETALS */
+.petal{
+  position:absolute;
+  font-size:18px;
+  animation:float 4s infinite ease-in-out;
+  pointer-events:none;
+}
+
+.petal:nth-child(3){
+  top:-10px;
+  left:10px;
+}
+
+.petal:nth-child(4){
+  bottom:-12px;
+  right:12px;
+  animation-delay:1.2s;
+}
+
+@keyframes float{
+  0%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-8px) rotate(12deg)}
+  100%{transform:translateY(0) rotate(0)}
+}
