@@ -12,8 +12,11 @@
 }
 
 body{
-  background:red !important;
+  margin:0;
+  background:var(--bg);
+  color:#fff;
 }
+
 
 /* ===== CONTAINER ===== */
 .container{
